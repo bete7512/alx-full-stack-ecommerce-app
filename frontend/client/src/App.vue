@@ -1,18 +1,18 @@
 <template>
-  <!-- <component :is="layout"> -->
+  <component :is="layout">
     <router-view></router-view>
-  <!-- </component> -->
+  </component>
 </template>
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 const { currentRoute } = useRouter()
 const defaultlayout = 'empty'
-console.log(curr)
+console.log()
 const layout = computed(
-  () => `${currentRoute || defaultlayout}-layout`
+  () => `${currentRoute.meta.layout || defaultlayout}-layout`
 )
-
+console.log(layout)
 </script>
 
 
