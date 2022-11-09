@@ -1,10 +1,11 @@
 <template>
     <div>
-        <div>am main layout</div>
+       <Nav></Nav>
         <slot></slot>
     </div>
 </template>
 <script setup>
+import Nav from '../common/Nav.vue';
 </script>
 <style>
     
