@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div>am main layout</div>
         <slot></slot>
     </div>
 </template>
