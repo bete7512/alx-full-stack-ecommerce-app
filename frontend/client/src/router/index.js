@@ -6,7 +6,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: { layout: "empty" },
     },
     // {
     //   path: '/about',
