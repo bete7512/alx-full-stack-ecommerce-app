@@ -10,7 +10,7 @@ const { currentRoute } = useRouter()
 const defaultlayout = 'empty'
 console.log()
 const layout = computed(
-  () => `${currentRoute.meta.layout || defaultlayout}-layout`
+  () => `${currentRoute.value.meta.layout || defaultlayout}-layout`
 )
 console.log(layout)
 </script>
