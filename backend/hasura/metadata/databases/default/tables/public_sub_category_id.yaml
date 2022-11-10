@@ -1,0 +1,15 @@
+table:
+  name: sub_category_id
+  schema: public
+object_relationships:
+  - name: category
+    using:
+      foreign_key_constraint_on: c_id
+array_relationships:
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: sub_category_id
+        table:
+          name: product
+          schema: public

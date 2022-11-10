@@ -1,0 +1,11 @@
+table:
+  name: seller
+  schema: public
+array_relationships:
+  - name: seller_companies
+    using:
+      foreign_key_constraint_on:
+        column: owner
+        table:
+          name: seller_company
+          schema: public

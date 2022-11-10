@@ -1,0 +1,15 @@
+table:
+  name: seller_company
+  schema: public
+object_relationships:
+  - name: seller
+    using:
+      foreign_key_constraint_on: owner
+array_relationships:
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: owner
+        table:
+          name: product
+          schema: public

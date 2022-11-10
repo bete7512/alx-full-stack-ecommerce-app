@@ -1,0 +1,31 @@
+table:
+  name: product
+  schema: public
+object_relationships:
+  - name: category
+    using:
+      foreign_key_constraint_on: category_id
+  - name: p_option
+    using:
+      foreign_key_constraint_on: option_id
+  - name: seller_company
+    using:
+      foreign_key_constraint_on: owner
+  - name: subCategoryIdBySubCategoryId
+    using:
+      foreign_key_constraint_on: sub_category_id
+array_relationships:
+  - name: orders
+    using:
+      foreign_key_constraint_on:
+        column: p_id
+        table:
+          name: order
+          schema: public
+  - name: p_options
+    using:
+      foreign_key_constraint_on:
+        column: p_id
+        table:
+          name: p_options
+          schema: public

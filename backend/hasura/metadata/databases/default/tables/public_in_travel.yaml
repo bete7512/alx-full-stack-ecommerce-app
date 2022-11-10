@@ -1,0 +1,10 @@
+table:
+  name: in_travel
+  schema: public
+object_relationships:
+  - name: deliver_agent
+    using:
+      foreign_key_constraint_on: d_id
+  - name: order
+    using:
+      foreign_key_constraint_on: o_id
