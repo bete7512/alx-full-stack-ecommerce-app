@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center text-slate-900 bg-[#6DB0B0] px-10 h-20">
             <div class="text-4-xl font-bold">BS</div>
             <div>
-                <div>
+                <!-- <div>
                     <div class="flex relative justify-center items-center ">
                         <div class="flex">
                             <div>
@@ -33,7 +33,7 @@
                                 class="text-white absolute right-0 bottom-0 top-0 bg-orange-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="flex justify-between items-center space-x-3">
                 <div class="flex justify-center items-center space-x-1">
@@ -41,20 +41,12 @@
                     <button class="text-lg">signin</button>
                 </div>
                 <div class="flex space-x-1 justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-cart" viewBox="0 0 16 16">
-                        <path
-                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                    </svg>
-                    <button class="text-lg">Cart</button>
+                   
+                    <button class="text-lg">Active Order</button>
                 </div>
                 <div class="flex space-x-1 justify-center items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                        class="bi bi-heart-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                    </svg>
-                    <button class="text-lg">Wishlist</button>
+                  
+                    <button class="text-lg">Waiting</button>
                 </div>
 
             </div>
