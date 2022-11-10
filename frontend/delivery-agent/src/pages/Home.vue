@@ -4,7 +4,7 @@
             Deliver Fast and get more  hunt for work on our platform.
         </div>
         <div>
-
+            <img src="../../" alt="">
         </div>
     </div>
 </template>
