@@ -9,13 +9,19 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
-      meta:{layout:'empty'}
+      meta:{layout:'main'}
     },  
-      {
+    {
       path: '/login',
-      name: 'home',
-      component: Home,
-      meta:
+      name: 'login',
+      component:Login,
+      meta:{layout:'empty'}
+    },   
+     {
+      path: '/signup',
+      name: 'signup',
+      component: Signup,
+      meta:{layout:'empty'}
     },
 
   ]
