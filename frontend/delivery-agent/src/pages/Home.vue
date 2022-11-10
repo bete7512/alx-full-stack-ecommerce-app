@@ -4,7 +4,7 @@
             Deliver Fast and get more  hunt for work on our platform.
         </div>
         <div>
-            <img class="w-1/2 h-60" src="../assets/delivery.png" alt="">
+            <img class="w-1/2 " src="../assets/delivery.jpeg" alt="">
         </div>
     </div>
 </template>
