@@ -3,7 +3,7 @@
         <div class="w-1/2 text-8xl  font-bold">
             Deliver Fast and get more  hunt for work on our platform.
         </div>
-            <img class="w-1/2 h-1/2 " src="../assets/delivery.jpeg" alt="">
+        <img class="w-1/2 h-1/2 " src="../assets/delivery.jpeg" alt="">
     </div>
 </template>
 <script setup>
