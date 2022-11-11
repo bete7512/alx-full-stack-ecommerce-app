@@ -1,6 +1,7 @@
 <template>
     <div class="space-x-0 flex">
-       <Drawer></Drawer>
+       <Drawer class="sm:block hidden"></Drawer>
+       <Drawer v-if="isNav"></Drawer>
         <div class="w-full">
             <div class="w-full text-3xl px-5 items-center pt-0 h-20 bg-slate-200 flex justify-between">
                 <div class="">
@@ -29,6 +30,7 @@
 </template>
 <script setup>
 import Drawer from './Drawer.vue';
+import {ref} from 
 </script>
 <style lang="">
     
