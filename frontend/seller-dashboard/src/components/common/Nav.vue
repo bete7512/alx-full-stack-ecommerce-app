@@ -34,7 +34,7 @@
 <script setup>
 import Drawer from './Drawer.vue';
 import {ref} from 'vue'
-const isNav = ref(true)
+const isNav = ref(false)
 const nav = ()=>{
     isNav.value = true
     console.log(isNav.value);
