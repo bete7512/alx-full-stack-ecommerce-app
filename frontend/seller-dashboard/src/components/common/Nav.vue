@@ -5,7 +5,7 @@
         <div class="w-full">
             <div class="w-full text-3xl px-5 items-center pt-0 h-20 bg-slate-200 flex justify-between">
                 <div class="">
-                    <button @click="()=>isNav = true" class="sm:hidden block">
+                    <button @click="nav()" class="sm:hidden block">
                          <svg  xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
                         class="bi bi-list " viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -34,7 +34,8 @@
 <script setup>
 import Drawer from './Drawer.vue';
 import {ref} from 'vue'
-const isNav = ref(false)
+const isNav = ref(true)
+const nav = ()=>isNav.value = true
 </script>
 <style lang="">
     
