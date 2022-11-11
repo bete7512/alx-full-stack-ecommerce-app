@@ -18,7 +18,7 @@
     </div>
 </template>
 <script setup >
-import { defineEmits } from 'vue';
+import { defineEmits,ref } from 'vue';
 const emit = defineEmits(['close'])
 const activeClass = ref(
     "bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
