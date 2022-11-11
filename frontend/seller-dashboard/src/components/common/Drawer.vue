@@ -1,13 +1,9 @@
 <template>
-    <div>
-        
-    </div>
+     <div class="w-64 sm:block hidden bg-orange-300 h-screen ">
+        </div>
 </template>
-<script>
-export default {
-    
-}
+<script setup>
 </script>
-<style lang="">
+<style>
     
 </style>
