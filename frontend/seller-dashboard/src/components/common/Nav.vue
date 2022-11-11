@@ -1,11 +1,11 @@
 <template>
     <div class="space-x-0 flex">
        <Drawer class="sm:block hidden"></Drawer>
-       <Drawer v-if="isNav" v-on:close="isNav = f"></Drawer>
+       <Drawer v-if="isNav" v-on:close="isNav = false"></Drawer>
         <div class="w-full">
             <div class="w-full text-3xl px-5 items-center pt-0 h-20 bg-slate-200 flex justify-between">
                 <div class="">
-                    <button @click="isNav = true" class="sm:hidden block">
+                    <button @click="()=>isNav = true" class="sm:hidden block">
                          <svg  xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
                         class="bi bi-list " viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
