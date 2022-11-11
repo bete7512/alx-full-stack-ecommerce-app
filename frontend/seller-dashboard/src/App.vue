@@ -5,7 +5,9 @@
 </template>
 <script setup>
 import { RouterView, RouterLink } from 'vue-router'
-import 
+import {ref,computed} from  'vue'
+import { useRoute } from 'vue-router'
+const 
 </script>
 
 <style>
