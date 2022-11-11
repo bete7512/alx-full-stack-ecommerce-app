@@ -10,13 +10,13 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
-      meta: { layout: 'empty' }
+      meta: { layout: 'main' }
     },
     {
       path: '/login',
       name: 'login',
       component: Login,
-      meta:{layout:'empty'}
+      meta:{layout:'main'}
 
     },
     {
