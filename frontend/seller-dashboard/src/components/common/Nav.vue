@@ -40,7 +40,7 @@ const nav = ()=>{
     isNav.value = true
     console.log(isNav.value);
 }
-//array of number
+//array of numbers
 </script>
 <style lang="">
     

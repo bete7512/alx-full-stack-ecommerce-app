@@ -1,5 +1,5 @@
 <template>
-    <div class="w-72  bg-orange-300 h-screen ">
+    <div class="w-72  bg-cyan-600 h-screen ">
         <div class="flex justify-between space-x-3 pr-3 items-center pt-3">
             <div></div>
             <button class="sm:hidden block" @click="emit('close')">
