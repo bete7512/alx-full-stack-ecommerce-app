@@ -13,10 +13,6 @@
                         </svg>
                     </button>
                 </div>
-
-
-
-                
             </div>
         </div>
     </div>
@@ -24,6 +20,12 @@
 <script setup >
 import { defineEmits } from 'vue';
 const emit = defineEmits(['close'])
+const activeClass = ref(
+    "bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
+);
+const inactiveClass = ref(
+    "border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
+);
 </script>
 <style scoped>
 .overlay {
