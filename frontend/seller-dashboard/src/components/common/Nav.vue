@@ -1,6 +1,6 @@
 <template>
-    <Mdrawer class="sm:hidden block" v-if="isNav" v-on:close="isNav = false"></Mdrawer>
     <div class="space-x-0 flex">
+        <Mdrawer class="sm:hidden block" v-if="isNav" v-on:close="isNav = false"></Mdrawer>
        <Drawer class="sm:block hidden"></Drawer>
         <div class="w-full">
             <div class="w-full text-3xl px-5 items-center pt-0 h-20 bg-slate-200 flex justify-between">
