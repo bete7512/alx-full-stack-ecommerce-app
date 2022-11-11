@@ -1,6 +1,6 @@
 <template>
     <div>
-        hello home
+        <slot></slot>
     </div>
 </template>
 <script setup>
