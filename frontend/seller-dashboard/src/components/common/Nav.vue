@@ -27,7 +27,9 @@
                     </svg>
                 </div>
             </div>
-            <slot></slot>
+            <div class="p-10">
+                <slot></slot>
+            </div>
         </div>
     </div>
 </template>
