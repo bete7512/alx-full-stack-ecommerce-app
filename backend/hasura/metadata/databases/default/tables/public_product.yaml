@@ -29,3 +29,139 @@ array_relationships:
         table:
           name: p_options
           schema: public
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+  - role: buyer
+    permission:
+      check: {}
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+  - role: deliveragent
+    permission:
+      check: {}
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+  - role: seller
+    permission:
+      check: {}
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+  - role: superadmin
+    permission:
+      check: {}
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+      filter: {}
+  - role: buyer
+    permission:
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+      filter: {}
+  - role: deliveragent
+    permission:
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+      filter: {}
+  - role: seller
+    permission:
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+      filter: {}
+  - role: superadmin
+    permission:
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+      filter: {}
+update_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - category_id
+        - id
+        - option_id
+        - owner
+        - sub_category_id
+        - about_product
+        - created_at
+        - updated_at
+      filter: {}
+      check: null

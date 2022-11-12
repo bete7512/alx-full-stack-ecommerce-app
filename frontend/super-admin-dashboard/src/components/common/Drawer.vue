@@ -1,22 +1,13 @@
 <template>
-    <div class="w-72  bg-cyan-600 h-screen ">
-        <div class="flex justify-between space-x-3 pr-3 items-center pt-3">
-            <div></div>
-            <button class="sm:hidden block" @click="emit('close')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
-                    <path fill-rule="evenodd"
-                        d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
-                </svg>
-            </button>
+    <div class="w-72 fixed bg-stone-900 z-10 h-screen ">
+      <div class="flex justify-center  space-x-3  pr-3 items-center pt-3">
+          <div class="text-white inline-flex p-10">BS SElls</div>
         </div>
-        <nav class="mt-10">
+        <nav class="">
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-            :class="[$route.name === 'recieptionists' ? activeClass : inactiveClass]"
-            to='/recieptionists'
+            :class="[$route.name === 'home' ? activeClass : inactiveClass]"
+            to='/'
           >
             <svg
               class="w-5 h-5"
@@ -34,13 +25,36 @@
               />
             </svg>
   
-            <span class="mx-4">Recieptionist</span>
+            <span class="mx-4">Dashboard</span>
+          </router-link>
+          <router-link
+            class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
+            :class="[$route.name === 'products' ? activeClass : inactiveClass]"
+            to='/products'
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 10C2 5.58172 5.58172 2 10 2V10H18C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10Z"
+                fill="currentColor"
+              />
+              <path
+                d="M12 2.25195C14.8113 2.97552 17.0245 5.18877 17.748 8.00004H12V2.25195Z"
+                fill="currentColor"
+              />
+            </svg>
+  
+            <span class="mx-4">Products</span>
           </router-link>
   
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-            :class="[$route.name === 'addpatients' ? activeClass : inactiveClass]"
-            to="/addpatients"
+            :class="[$route.name === 'addnewproduct' ? activeClass : inactiveClass]"
+            to="/addnewproduct"
           >
             <svg
               class="w-5 h-5"
@@ -66,13 +80,13 @@
               />
             </svg>
   
-            <span class="mx-4">Add patients</span>
+            <span class="mx-4">Add new Products</span>
           </router-link>
   
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-            :class="[$route.name === 'patients' ? activeClass : inactiveClass]"
-            to="/viewpatients"
+            :class="[$route.name === 'transactions' ? activeClass : inactiveClass]"
+            to="/transactions"
           >
             <svg
               class="w-5 h-5"
@@ -94,13 +108,13 @@
               />
             </svg>
   
-            <span class="mx-4">view patients</span>
+            <span class="mx-4">Transaction</span>
           </router-link>
   
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-            :class="[$route.name === 'addorders' ? activeClass : inactiveClass]"
-            to="/add_orders"
+            :class="[$route.name === 'orders' ? activeClass : inactiveClass]"
+            to="/orders"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path
@@ -113,26 +127,26 @@
               />
             </svg>
   
-            <span class="mx-4">Add orders</span>
+            <span class="mx-4">Orders</span>
           </router-link>
   
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-            :class="[$route.name === 'orders' ? activeClass : inactiveClass]"
-            to="/look_orders"
+            :class="[$route.name === 'chat' ? activeClass : inactiveClass]"
+            to="/chat"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
               <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
             </svg>
   
-            <span class="mx-4">patient queue</span>
+            <span class="mx-4">Messages</span>
           </router-link>
   
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-            :class="[$route.name === 'addbills' ? activeClass : inactiveClass]"
-            to="/add_bills"
+            :class="[$route.name === 'home' ? activeClass : inactiveClass]"
+            to="/"
           >
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
             <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
@@ -140,22 +154,10 @@
             <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
           </svg>
   
-            <span class="mx-4">Add bills</span>
+            <span class="mx-4">setting</span>
           </router-link>
   
-          <router-link
-            class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-            :class="[$route.name === 'prepareprescrition' ? activeClass : inactiveClass]"
-            to="/printprescription"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
-              />
-            </svg>
-  
-            <span class="mx-4">print prescription</span>
-          </router-link>
+          
         </nav>
     </div>
 </template>

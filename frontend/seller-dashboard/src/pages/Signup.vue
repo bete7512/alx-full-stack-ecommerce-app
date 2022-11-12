@@ -1,66 +1,66 @@
 <template>
-    <div class="flex items-center justify-center h-auto py-5  px-6 bg-gray-200">
-        <div class="sm:w-full w-full md:w-3/4 lg:1/2 p-6 bg-white rounded-md shadow-md">
+    <div class="flex items-center justify-center h-screen py-5  px-6 bg-gray-200">
+        <div class="sm:w-full w-full md:w-full lg:w-1/2 p-6 bg-white rounded-md shadow-md">
             <div class="flex items-center justify-center">
                 <span class="text-2xl font-semibold text-gray-700">Signup</span>
             </div>
             <Form class=" justify-center space-y-6 bg-white   items-center  p-b-10 px-10"
                 @submit.preventDefault="onSubmit" :validation-schema="schema" v-slot="{ errors }">
-                <div class="space-y-10 ">
+                <div class="space-y-10 pt-10 ">
                     <div class="sm:flex block space-x-4 w-full">
                         <div class="space-y-3 sm:w-1/2 w-full">
-                            <label>Username</label>
-                            <Field name="username" type="text" v-model="username" placeholder="enter username"
+                            <label class="font-bold text-2xl">First Name</label>
+                            <Field name="fname" type="text" v-model="fname" placeholder="enter Your first name"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                                :class="{ 'is-invalid': errors.username }" />
-                            <div class="text-red-700">{{errors.username}}</div>
+                                :class="{ 'is-invalid': errors.fname }" />
+                            <div class="text-red-700">{{errors.fname}}</div>
                         </div>
                         <div class="space-y-3 sm:w-1/2 w-full">
-                            <label>Password</label>
-                            <Field name="password" type="password" v-model="password" placeholder="enter passwpord"
+                            <label class="font-bold text-2xl">Last name</label>
+                            <Field name="lname" type="lname" v-model="lname" placeholder="enter last name"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                                :class="{ 'is-invalid': errors.password }" />
-                            <div class="text-red-700">{{errors.password}}</div>
+                                :class="{ 'is-invalid': errors.lname }" />
+                            <div class="text-red-700">{{errors.lname}}</div>
                         </div>
                     </div>
                     <div class="sm:flex block space-x-4 w-full">
                         <div class="space-y-3 sm:w-1/2 w-full">
-                            <label>Username</label>
+                            <label class="font-bold text-2xl">Email</label>
+                            <Field name="email" type="text" v-model="email" placeholder="enter your email address"
+                                class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                                :class="{ 'is-invalid': errors.email }" />
+                            <div class="text-red-700">{{errors.email}}</div>
+                        </div>
+                        <div class="space-y-3 sm:w-1/2 w-full">
+                            <label class="font-bold text-2xl">Username</label>
                             <Field name="username" type="text" v-model="username" placeholder="enter username"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.username }" />
                             <div class="text-red-700">{{errors.username}}</div>
-                        </div>
-                        <div class="space-y-3 sm:w-1/2 w-full">
-                            <label>Password</label>
-                            <Field name="password" type="password" v-model="password" placeholder="enter passwpord"
-                                class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                                :class="{ 'is-invalid': errors.password }" />
-                            <div class="text-red-700">{{errors.password}}</div>
                         </div>
                     </div>
                     <div class="sm:flex block space-x-4 w-full">
                         <div class="space-y-3 sm:w-1/2 w-full">
-                            <label>Username</label>
-                            <Field name="username" type="text" v-model="username" placeholder="enter username"
-                                class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                                :class="{ 'is-invalid': errors.username }" />
-                            <div class="text-red-700">{{errors.username}}</div>
-                        </div>
-                        <div class="space-y-3 sm:w-1/2 w-full">
-                            <label>Password</label>
+                            <label class="font-bold text-2xl">Password</label>
                             <Field name="password" type="password" v-model="password" placeholder="enter passwpord"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.password }" />
                             <div class="text-red-700">{{errors.password}}</div>
+                        </div>
+                        <div class="space-y-3 sm:w-1/2 w-full">
+                            <label class="font-bold text-2xl">Confirm Password</label>
+                            <Field name="cpassword" type="password" v-model="cpassword" placeholder="enter passwpord"
+                                class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                                :class="{ 'is-invalid': errors.cpassword }" />
+                            <div class="text-red-700">{{errors.cpassword}}</div>
                         </div>
                     </div>
                     <div class="space-y-3">
-                            <label>Password</label>
-                            <Field name="password" type="password" v-model="password" placeholder="enter passwpord"
+                            <label class="font-bold text-2xl">Address</label>
+                            <Field name="address" type="text" v-model="address" placeholder="enter passwpord"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                                :class="{ 'is-invalid': errors.password }" />
-                            <div class="text-red-700">{{errors.password}}</div>
+                                :class="{ 'is-invalid': errors.address}" />
+                            <div class="text-red-700">{{errors.address}}</div>
                         </div>
                 </div>
                 <div class="text-red-600">{{loginreturn}}</div>
@@ -83,15 +83,9 @@
                             Submit
                         </div>
                     </button>
+                    <div><router-link class="text-blue-400" to="/login">login</router-link></div>
                 </div>
-                <div class="text-lg py-8 flex justify-center items-center">or signin with google</div>
-                <div class="pt-2">
-                    <button type="submit"
-                        class="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform  rounded-xl bg-slate-500 focus:outline-none focus:ring-2 focus:ring-offset-2">
-                        Google
-                       
-                    </button>
-                </div>
+                
             </Form>
         </div>
     </div>
@@ -103,15 +97,32 @@ import { ref } from 'vue'
 import { defineEmits } from 'vue';
 const username = ref('')
 const password = ref('')
+const fname = ref('')
+const lname = ref('')
+const email = ref('')
+const cpassword = ref('')
+const address = ref('')
 const schema = Yup.object().shape({
+    fname: Yup.string()
+        .required('First Name is required'),
+    lname: Yup.string()
+        .required('Last name is required'),
     username: Yup.string()
         .required('username is required'),
+    email: Yup.string()
+        .required('Email is required')
+        .email('Email is invalid'),
     password: Yup.string()
         .min(3, 'Password must be at least 3 characters')
         .required('Password is required'),
-})
-
-
+    cpassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .required('Confirm Password is required'),
+    address: Yup.string()
+        .required('address is required'),
+    acceptTerms: Yup.string()
+        .required('Accept Ts & Cs is required')
+});
 const onSubmit = async () => {
     try {
       console.log("display something")

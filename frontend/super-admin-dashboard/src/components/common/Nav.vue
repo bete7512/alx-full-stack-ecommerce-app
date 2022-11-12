@@ -1,18 +1,21 @@
 <template>
-    <Mdrawer class="sm:hidden block" v-if="isNav" v-on:close="isNav = false"></Mdrawer>
-    <div class="space-x-0 flex">
-       <Drawer class="sm:block hidden"></Drawer>
-        <div class="w-full">
-            <div class="w-full text-3xl px-5 items-center pt-0 h-20 bg-slate-200 flex justify-between">
+    <Mdrawer class="lg:hidden block" v-if="isNav" v-on:close="isNav = false"></Mdrawer>
+    <div class="space-x-0 w-full  z-10 flex justify-between">
+        <div class="lg:block bg-blue-600 z-20 fixed w-1/6 hidden">
+            <Drawer class=""></Drawer>
+        </div>
+        <div class="w-full flex-1   bg-slate-400">
+            <!-- <div class="  "> -->
+            <div
+                class="w-full  right-0 z-0 fixed text-3xl px-5 items-center pt-0 h-20 bg-slate-200 flex justify-between">
                 <div class="">
-                    <button @click="nav()" v-if="!isNav" class="sm:hidden block">
-                         <svg  xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
-                        class="bi bi-list " viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                    </svg>
+                    <button @click="nav()" v-if="!isNav" class="lg:hidden block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
+                            class="bi bi-list " viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
                     </button>
-                   
                 </div>
                 <div class="flex items-center space-x-3 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="red" class="bi bi-bell"
@@ -26,9 +29,23 @@
                             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                     </svg>
                 </div>
+                <!-- </div> -->
             </div>
-            <div class="p-10">
-                <slot></slot>
+            <div class="w-full lg:pl-72 pl-0 h-screen right-0  mt-20 ">
+                <div class="sm:w-1/6 w-full sm:px-0 px-5 h-28 lg:pl-16 pl-5 pt-5 space-x-2  mt-4 rounded-lg">
+
+                    <div class="flex flex-col justify-center items-start">
+                        <div class="font-bold flex space-x-4 items-center">
+                            <div class="text-gray-600 text-3xl "> Dashboard</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="text-gray-600"
+                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <slot class=""></slot>
             </div>
         </div>
     </div>
@@ -36,9 +53,9 @@
 <script setup>
 import Drawer from './Drawer.vue';
 import Mdrawer from './Mobile/Drawer.vue'
-import {ref} from 'vue'
+import { ref } from 'vue'
 const isNav = ref(false)
-const nav = ()=>{
+const nav = () => {
     isNav.value = true
     console.log(isNav.value);
 }

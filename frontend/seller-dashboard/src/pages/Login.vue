@@ -25,7 +25,7 @@
                 <div class="text-red-600">{{loginreturn}}</div>
                 <div class="pt-2">
                     <button type="submit"
-                        class="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        class="flex items-center justify-center w-full px-10 py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <div v-if="loginprocess" class="text-2xl">
                             <svg role="status" class="inline mr-3 w-4 h-4 text-white animate-spin" viewBox="0 0 100 101"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,6 +42,7 @@
                             Sign in
                         </div>
                     </button>
+                    <div class="text-blue-900"><router-link to="/signup">Signup</router-link> <router-link to="/login">Forgot password</router-link></div>
                 </div>
             </Form>
         </div>
@@ -50,8 +51,9 @@
 <script setup >
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 import { defineEmits } from 'vue';
+import router from '../router';
 const username = ref('')
 const password = ref('')
 const schema = Yup.object().shape({
@@ -62,8 +64,13 @@ const schema = Yup.object().shape({
         .required('Password is required'),
 })
 
+onMounted(() => {
+    window.localStorage.removeItem('Apollotoken')
+})
 
 const onSubmit = async () => {
+    window.localStorage.setItem('Apollotoken', "username.value")
+    router.push('/')
     try {
       console.log("display something")
     }

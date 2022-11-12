@@ -1,6 +1,50 @@
-actions: []
+actions:
+  - name: fileupload
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
+    permissions:
+      - role: anonymous
+      - role: deliveragent
+      - role: seller
+      - role: buyer
+      - role: superadmin
+  - name: loginbuyer
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
+  - name: logindeliveragent
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
+  - name: loginseller
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
+  - name: loginsuper
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
+  - name: signupbuyer
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
+  - name: signupdeliveragent
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
+  - name: signupseller
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
+  - name: signupsuperadmin
+    definition:
+      kind: synchronous
+      handler: http://localhost:3000
 custom_types:
   enums: []
-  input_objects: []
-  objects: []
+  input_objects:
+    - name: SampleInput
+  objects:
+    - name: SampleOutput
   scalars: []
