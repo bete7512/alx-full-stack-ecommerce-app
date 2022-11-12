@@ -12,7 +12,6 @@
                     </svg>
                 </button>
             </div>
-
             <div class="flex justify-center items-center space-x-0">
                 <div
                     class="border-8 rounded-full p-4 h-8 w-8 flex justify-center items-center text-lg font-extrabold border-blue-800">
@@ -73,7 +72,6 @@
                     </div>
                 </Form>
             </div>
-            
             <div class="flex pb-2 justify-center items-center "><button class=" px-10 py-3 bg-cyan-700 rounded-lg ">Next</button></div>
         </div>
     </div>
