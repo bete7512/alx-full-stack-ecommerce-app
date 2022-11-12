@@ -33,14 +33,15 @@ const execute = async (variables) => {
 		}
 	);
 	const data = await fetchResponse.json();
-	console.log('DEBUG: ', data);
 	return data;
 };
 const handler = async (req, res) => {
 	const { fname, lname, email, password, address } = req.body.input.inputs;
 	const finduser = require('../FInder/find')
-	const { data, error } = await finduser(email, find_query)
-	if (data) {
+	const { data, error } = await finduser({email:email}, find_query)
+	console.log(data);
+	const user = data["seller"]
+	if (user.length) {
 		return res.status(400).json({
 			message: 'you are  registered no registratrion again'
 		})
@@ -58,13 +59,11 @@ const handler = async (req, res) => {
 		}
 		const { data, errors } = await execute(variables);
 		if (data) {
-			console.log(data)
 			res.send({
 				success: "You are succefully registered"
 			})
 		}
 		else {
-			console.log(errors);
 			res.send({
 				message: "something went wrong please try again"
 			})

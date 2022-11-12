@@ -13,16 +13,9 @@ const finduser = async (variables,querys) => {
                 variables
             })
         });
-    const {data} = await fetchResponse.json();
-    console.log('DEBUG: ', data);
-        // if(!data){
-    //     console.log("fucked say me congratulation please");
-    // }
-    // else{
-    //     console.log("seller doesnot registered");
-    // }
-    // console.log(error);
-    return {data};
+    const data = await fetchResponse.json();
+    // console.log('DEBUG: ', data);
+    return data;
 };
 
 module.exports = finduser;

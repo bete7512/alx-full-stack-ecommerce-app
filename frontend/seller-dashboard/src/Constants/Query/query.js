@@ -1,31 +1,32 @@
 import gql from 'graphql-tag'
 
 const insert_company = gql`
-mutation MyMutation($about_company: String = "", $address: String = "", $licence_number: Int = 10, $name: String = "") {
-  insert_seller_company(objects: {about_company: $about_company, address: $address, licence_number: $licence_number, name: $name}) {
+mutation MyMutation($address: String!, $name: String!, $about_company: String!) {
+  insert_seller_company(objects: {name: $name, address: $address, about_company: $about_company}) {
     returning {
       name
-      seller {
-        email
-        first_name
-        last_name
-      }
+      id
+      licence_number
+      address
+      about_company
     }
   }
 }
 `
 const seller_login = gql`
-mutation MyMutation(  $password: String!, $username: String!) {
-  loginseller(inputs: {password: $password, username: $username}) {
+mutation MyMutation(  $password: String!, $email: String!) {
+  loginseller(inputs: {password: $password, email: $email}) {
     accestoken
   }
 }
 `
 const seller_signup = gql`
-mutation MyMutation($fname: String!, $lname: String!,$password:String!, $email: String!, $address: String!,$username:String!) {
-  signupseller(inputs: {fname: $fname, lname: $lname, email: $email, address: $address, password: $password, username: $username}) {
+mutation MyMutation($username: String!, $password: String!, $lname: String = "", $fname: String!, $email: String!, $address: String!) {
+  signupseller(inputs: {address: $address, email: $email, fname: $fname, lname: $lname, password: $password, username: $username}) {
     success
   }
 }
 `
+
+
 export {insert_company,seller_login,seller_signup}

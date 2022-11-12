@@ -8,21 +8,21 @@
                 @submit.preventDefault="onSubmit" :validation-schema="schema" v-slot="{ errors }">
                 <div class="space-y-10">
                     <div class="space-y-3">
-                        <label>Username</label>
-                        <Field name="username" type="text" v-model="username" placeholder="enter username"
+                        <label>Email</label>
+                        <Field name="email" type="text" v-model="email" placeholder="enter your email"
                             class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                            :class="{ 'is-invalid': errors.username }" />
-                        <div class="text-red-700">{{errors.username}}</div>
+                            :class="{ 'is-invalid': errors.email }" />
+                        <div class="text-red-700">{{ errors.email }}</div>
                     </div>
                     <div class="space-y-3">
                         <label>Password</label>
                         <Field name="password" type="password" v-model="password" placeholder="enter passwpord"
                             class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                             :class="{ 'is-invalid': errors.password }" />
-                        <div class="text-red-700">{{errors.password}}</div>
+                        <div class="text-red-700">{{ errors.password }}</div>
                     </div>
                 </div>
-                <div class="text-red-600">{{loginreturn}}</div>
+                <!-- <div class="text-red-600">{{ loginreturn }}</div> -->
                 <div class="pt-2">
                     <button type="submit"
                         class="flex items-center justify-center w-full px-10 py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -42,7 +42,10 @@
                             Sign in
                         </div>
                     </button>
-                    <div class="text-blue-900"><router-link to="/signup">Signup</router-link> <router-link to="/login">Forgot password</router-link></div>
+                    <div class="text-blue-900">
+                        <router-link to="/signup">Signup</router-link>
+                        <router-link to="/login">Forgot password</router-link>
+                    </div>
                 </div>
             </Form>
         </div>
@@ -51,31 +54,38 @@
 <script setup >
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { ref,onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { defineEmits } from 'vue';
 import router from '../router';
-const username = ref('')
+import { UserStore } from '../stores/UserStore';
+const email = ref('')
 const password = ref('')
 const schema = Yup.object().shape({
-    username: Yup.string()
-        .required('username is required'),
+    email: Yup.string()
+        .required('email is required'),
     password: Yup.string()
         .min(3, 'Password must be at least 3 characters')
         .required('Password is required'),
 })
 
-onMounted(() => {
-    window.localStorage.removeItem('Apollotoken')
-})
-
+// onMounted(() => {
+//     window.localStorage.removeItem('Apollotoken')
+// })
+const user = UserStore()
+const loginprocess =ref(false)
 const onSubmit = async () => {
-    window.localStorage.setItem('Apollotoken', "username.value")
-    router.push('/')
+    console.log('submit')
+    loginprocess.value = true
     try {
-      console.log("display something")
+        // loginprocess.value = true
+
+        const response = await user.login(email.value, password.value)
+        loginprocess.value = false
+        console.log(response);
     }
     catch (error) {
-       
+        loginprocess.value = false
+        console.log(error);
     }
 }
 </script>

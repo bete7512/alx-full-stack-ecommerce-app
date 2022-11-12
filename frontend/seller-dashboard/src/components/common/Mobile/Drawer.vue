@@ -36,7 +36,7 @@
             <span class="mx-4">Products</span>
           </router-link>
 
-          <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
+          <!-- <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
             :class="[$route.name === 'addnewproduct' ? activeClass : inactiveClass]" to="/addnewproduct">
             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -54,7 +54,7 @@
             </svg>
 
             <span class="mx-4">Add new Products</span>
-          </router-link>
+          </router-link> -->
 
           <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
             :class="[$route.name === 'transactions' ? activeClass : inactiveClass]" to="/transactions">
@@ -72,7 +72,7 @@
 
             <span class="mx-4">Transaction</span>
           </router-link>
-          <router-link
+          <!-- <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
             :class="[$route.name === 'company' ? activeClass : inactiveClass]"
             to="/company"
@@ -98,7 +98,7 @@
             </svg>
   
             <span class="mx-4">Company</span>
-          </router-link>
+          </router-link> -->
 
           <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
             :class="[$route.name === 'orders' ? activeClass : inactiveClass]" to="/orders">

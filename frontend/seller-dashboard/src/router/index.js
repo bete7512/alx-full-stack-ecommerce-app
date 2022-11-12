@@ -11,13 +11,13 @@ const router = createRouter({
       name: 'home',
       component: Home,
       meta: { layout: 'main' },
-      beforeEnter: (to, from, next) => {
-        if (localStorage.getItem('Apollotoken')) {
-          next()
-        } else {
-          next('/login')
-        }
-      }
+      // beforeEnter: (to, from, next) => {
+      //   if (localStorage.getItem('Apollotoken')) {
+      //     next()
+      //   } else {
+      //     next('/login')
+      //   }
+      // }
     },
     {
       path: '/login',
@@ -88,13 +88,13 @@ const router = createRouter({
 })
 
 // window.localStorage.removeItem('Apollotoken')
-// router.beforeEach(async (to) => {
-//   const publicPages = ['/login', '/signup'];
-//   const authRequired = !publicPages.includes(to.path);
-//   if (authRequired && !window.localStorage.getItem("Apollotoken")) {
-//     // returnUrl = to.fullPath;
-//     return '/login';
-//   }
-// });
+router.beforeEach(async (to) => {
+  const publicPages = ['/login', '/signup'];
+  const authRequired = !publicPages.includes(to.path);
+  if (authRequired && !window.localStorage.getItem("Apollotoken")) {
+    // returnUrl = to.fullPath;
+    return '/login';
+  }
+});
 // console.log(window.localStorage.getItem("Apollotoken"));
 export default router
