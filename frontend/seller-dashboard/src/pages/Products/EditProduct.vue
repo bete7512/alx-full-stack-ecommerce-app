@@ -76,7 +76,6 @@
         </div>
     </div>
 </template>
-
 <script setup>
 import { Form } from 'vee-validate';
 import * as Yup from 'yup';
@@ -95,7 +94,6 @@ const schema = Yup.object().shape({
 })
 const emits = defineEmits(['close', 'delete']);
 </script>
-
 <style>
 .overlay {
     position: fixed;
