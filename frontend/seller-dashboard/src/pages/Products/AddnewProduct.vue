@@ -40,7 +40,7 @@
                                 class="block w-full h-10 px-5 border-2 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform  border-transparent rounded-lg bg-orange-200 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.email }" />
                             <div class="text-red-700">{{ errors.email }}</div> -->
-                            <textarea name="" id="" class="w-full h-10 border-2 rounded"></textarea>
+                            <textarea name="" id="" class="w-full border-gray-400 h-10 border-2 rounded"></textarea>
                         </div>
                         <div class="space-y-3">
                             <label>About Product</label>
@@ -48,7 +48,7 @@
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.password }" />
                             <div class="text-red-700">{{ errors.password }}</div> -->
-                            <textarea name="" class="w-full h-20 border-2 rounded"></textarea>
+                            <textarea name="" class="w-full border-black h-20 border-2 rounded"></textarea>
                         </div>
                         <div>
                             <label for="">Category</label>

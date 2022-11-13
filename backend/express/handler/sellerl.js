@@ -16,6 +16,7 @@ const handler = async (req, res) => {
   const data = await finduser({ email: email }, find_query)
   const user = data['data']["seller"]
   console.log(user);
+  // console.log(user[0].id);
   if (!user.length) {
     return res.status(400).json({
       message: 'incorrect username or password please enter again'
@@ -28,16 +29,18 @@ const handler = async (req, res) => {
         message: "incorrect password"
       })
     }
+    console.log(user[0].id);
     const token = jwt.sign({
       "https://hasura.io/jwt/claims":
       {
-        "x-hasura-allowed-roles": ["seller"],
+        "x-hasura-allowed-roles": ["seller","superadmin","admin","buyer","deliveryagent"],
         "x-hasura-default-role": "seller",
-        "x-hasura-user-id": `${user.id}`
+        "x-hasura-user-id": `${user[0].id}`
       }
     }
       , process.env.SECRET_KEY)
-    console.log(token)
+    // console.log(token)
+    // console.log(user.id);
     return res.json({
       accestoken: token,
     })

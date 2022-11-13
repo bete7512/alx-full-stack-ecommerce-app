@@ -22,6 +22,24 @@ app.post('/:route', (req, res) => {
     })
   }
 })
+app.post('/event/:route', (req, res) => {
+  try {
+    console.log("from here");
+  const handler = require(`./events/${req.params.route}`);
+  if (!handler) {
+      return res.status(400).json({
+        message: 'not found'
+      })
+    }
+    handler(req, res);
+  }
+  catch (e) {
+    console.log(e);
+    return res.status(400).json({
+      message: 'unexpected error occured'
+    })
+  }
+})
 app.listen(3000,
   () => {
     console.log("on the moon")

@@ -1,14 +1,10 @@
 import gql from 'graphql-tag'
 
 const insert_company = gql`
-mutation MyMutation($address: String!, $name: String!, $about_company: String!) {
-  insert_seller_company(objects: {name: $name, address: $address, about_company: $about_company}) {
+mutation MyMutation($about_company: String!, $address: String!, $licence_number: Int!, $name: String!) {
+  insert_seller_company(objects: {about_company: $about_company, address: $address, licence_number: $licence_number, name: $name}) {
     returning {
       name
-      id
-      licence_number
-      address
-      about_company
     }
   }
 }
@@ -27,6 +23,65 @@ mutation MyMutation($username: String!, $password: String!, $lname: String = "",
   }
 }
 `
+const seller_company = gql`
+query MyQuery {
+  seller_company(where: {seller: {have_company: {_eq: true}}}) {
+    about_company
+    address
+    licence_number
+    id
+    name
+    owner
+    verified
+  }
+}
+`
+const product_query = gql`
+query MyQuery {
+  product {
+    about_product
+    category {
+      id
+      name
+      sub_category_ids {
+        name
+        id
+      }
+    }
+    created_at
+    id
+    name
+    p_options {
+      difference
+      id
+      image
+      name
+      p_id
+    }
+  }
+}
 
-
-export {insert_company,seller_login,seller_signup}
+`
+const insert_product = gql`
+mutation MyMutation($name: String = "", $about_product: String = "", $data: [p_options_insert_input!] = {}, $category_id: Int = 10, $sub_category_id: Int = 10) {
+  insert_product(objects: {name: $name, about_product: $about_product, p_options: {data: $data}, category_id: $category_id, sub_category_id: $sub_category_id}) {
+    returning {
+      name
+    }
+  }
+}
+`
+const category_query = gql`
+query MyQuery {
+  category {
+    name
+    id
+    sub_category_ids {
+      c_id
+      id
+      name
+    }
+  }
+}
+`
+export {insert_company,seller_login,seller_signup,seller_company,insert_product,product_query,category_query}

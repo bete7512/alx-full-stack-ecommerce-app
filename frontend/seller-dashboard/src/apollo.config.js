@@ -2,7 +2,9 @@ import { ApolloClient,createHttpLink,InMemoryCache } from "@apollo/client/core";
 const getHeaders = () => {
     var headers = {};
     const token = window.localStorage.getItem("Apollotoken");
+    // console.log("from apollo token"+token);
     if (token){
+
       headers = {Authorization:`Bearer ${token}`};
     }
     return headers;
