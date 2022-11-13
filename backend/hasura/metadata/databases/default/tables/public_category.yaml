@@ -14,5 +14,19 @@ array_relationships:
       foreign_key_constraint_on:
         column: c_id
         table:
-          name: sub_category_id
+          name: sub_category
           schema: public
+insert_permissions:
+  - role: seller
+    permission:
+      check: {}
+      columns:
+        - id
+        - name
+select_permissions:
+  - role: seller
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}

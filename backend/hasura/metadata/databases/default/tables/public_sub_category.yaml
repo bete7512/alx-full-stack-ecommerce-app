@@ -1,15 +1,15 @@
 table:
-  name: p_options
+  name: sub_category
   schema: public
 object_relationships:
-  - name: product
+  - name: category
     using:
-      foreign_key_constraint_on: p_id
+      foreign_key_constraint_on: c_id
 array_relationships:
   - name: products
     using:
       foreign_key_constraint_on:
-        column: option_id
+        column: sub_category_id
         table:
           name: product
           schema: public
@@ -18,45 +18,35 @@ insert_permissions:
     permission:
       check: {}
       columns:
+        - c_id
         - id
-        - p_id
-        - difference
-        - image
         - name
 select_permissions:
   - role: anonymous
     permission:
       columns:
+        - c_id
         - id
-        - p_id
-        - difference
-        - image
         - name
       filter: {}
   - role: buyer
     permission:
       columns:
+        - c_id
         - id
-        - p_id
-        - difference
-        - image
         - name
       filter: {}
   - role: seller
     permission:
       columns:
+        - c_id
         - id
-        - p_id
-        - difference
-        - image
         - name
       filter: {}
   - role: superadmin
     permission:
       columns:
+        - c_id
         - id
-        - p_id
-        - difference
-        - image
         - name
       filter: {}

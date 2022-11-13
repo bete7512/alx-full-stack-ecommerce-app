@@ -8,9 +8,6 @@ object_relationships:
   - name: p_option
     using:
       foreign_key_constraint_on: option_id
-  - name: seller_company
-    using:
-      foreign_key_constraint_on: owner
   - name: subCategoryIdBySubCategoryId
     using:
       foreign_key_constraint_on: sub_category_id
@@ -70,13 +67,14 @@ insert_permissions:
     permission:
       check: {}
       columns:
+        - about_product
         - category_id
+        - created_at
         - id
+        - name
         - option_id
         - owner
         - sub_category_id
-        - about_product
-        - created_at
         - updated_at
   - role: superadmin
     permission:
@@ -94,25 +92,27 @@ select_permissions:
   - role: anonymous
     permission:
       columns:
+        - about_product
         - category_id
+        - created_at
         - id
+        - name
         - option_id
         - owner
         - sub_category_id
-        - about_product
-        - created_at
         - updated_at
       filter: {}
   - role: buyer
     permission:
       columns:
+        - about_product
         - category_id
+        - created_at
         - id
+        - name
         - option_id
         - owner
         - sub_category_id
-        - about_product
-        - created_at
         - updated_at
       filter: {}
   - role: deliveragent
@@ -130,25 +130,27 @@ select_permissions:
   - role: seller
     permission:
       columns:
+        - about_product
         - category_id
+        - created_at
         - id
+        - name
         - option_id
         - owner
         - sub_category_id
-        - about_product
-        - created_at
         - updated_at
       filter: {}
   - role: superadmin
     permission:
       columns:
+        - about_product
         - category_id
+        - created_at
         - id
+        - name
         - option_id
         - owner
         - sub_category_id
-        - about_product
-        - created_at
         - updated_at
       filter: {}
 update_permissions:

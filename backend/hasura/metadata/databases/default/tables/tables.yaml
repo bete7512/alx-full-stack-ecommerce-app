@@ -8,6 +8,6 @@
 - "!include public_product.yaml"
 - "!include public_seller.yaml"
 - "!include public_seller_company.yaml"
-- "!include public_sub_category_id.yaml"
+- "!include public_sub_category.yaml"
 - "!include public_supper_admin.yaml"
 - "!include public_wishlist.yaml"

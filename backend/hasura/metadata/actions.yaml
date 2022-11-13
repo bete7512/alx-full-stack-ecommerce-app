@@ -2,7 +2,7 @@ actions:
   - name: fileupload
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://localhost:3000/fileupload
     permissions:
       - role: anonymous
       - role: deliveragent
@@ -12,39 +12,59 @@ actions:
   - name: loginbuyer
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://localhost:3000/loginbuyer
   - name: logindeliveragent
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://localhost:3000/logindeliveragent
   - name: loginseller
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://host.docker.internal:3000/sellerl
+    permissions:
+      - role: seller
+      - role: anonymous
   - name: loginsuper
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://localhost:3000/loginsuper
+    permissions:
+      - role: anonymous
   - name: signupbuyer
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://localhost:3000/signupbuyer
+    permissions:
+      - role: anonymous
   - name: signupdeliveragent
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://localhost:3000/signupdeliveragent
+    permissions:
+      - role: anonymous
   - name: signupseller
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://host.docker.internal:3000/sellers
+    permissions:
+      - role: superadmin
+      - role: seller
+      - role: deliveragent
+      - role: buyer
+      - role: anonymous
   - name: signupsuperadmin
     definition:
       kind: synchronous
-      handler: http://localhost:3000
+      handler: http://localhost:3000/signupsuperadmin
 custom_types:
   enums: []
   input_objects:
     - name: SampleInput
+    - name: inputs
+    - name: input_reg
   objects:
     - name: SampleOutput
+    - name: outputs
+    - name: output_reg
+    - name: fileoutput
   scalars: []

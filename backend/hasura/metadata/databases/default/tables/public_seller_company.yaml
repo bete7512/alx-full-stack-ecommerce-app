@@ -5,11 +5,62 @@ object_relationships:
   - name: seller
     using:
       foreign_key_constraint_on: owner
-array_relationships:
-  - name: products
-    using:
-      foreign_key_constraint_on:
-        column: owner
-        table:
-          name: product
-          schema: public
+insert_permissions:
+  - role: seller
+    permission:
+      check: {}
+      set:
+        owner: x-hasura-User-Id
+      columns:
+        - about_company
+        - address
+        - id
+        - licence_number
+        - name
+        - owner
+select_permissions:
+  - role: seller
+    permission:
+      columns:
+        - verified
+        - id
+        - licence_number
+        - owner
+        - about_company
+        - address
+        - name
+      filter:
+        owner:
+          _eq: X-Hasura-User-Id
+      allow_aggregations: true
+update_permissions:
+  - role: seller
+    permission:
+      columns:
+        - verified
+        - id
+        - licence_number
+        - owner
+        - about_company
+        - address
+        - name
+      filter: {}
+      check: {}
+      set:
+        owner: x-hasura-User-Id
+delete_permissions:
+  - role: seller
+    permission:
+      backend_only: false
+      filter: {}
+event_triggers:
+  - name: seller_having_company
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: http://host.docker.internal:3000/event/company_register

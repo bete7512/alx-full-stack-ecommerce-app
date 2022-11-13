@@ -9,3 +9,19 @@ array_relationships:
         table:
           name: seller_company
           schema: public
+select_permissions:
+  - role: seller
+    permission:
+      columns:
+        - address
+        - email
+        - expire_time
+        - first_name
+        - have_company
+        - id
+        - last_name
+        - password
+        - status
+        - v_code_for_for
+        - v_code_for_reg
+      filter: {}

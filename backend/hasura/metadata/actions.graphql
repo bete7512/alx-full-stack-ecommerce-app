@@ -1,55 +1,57 @@
 type Mutation {
   fileupload(
-    arg1: SampleInput!
-  ): SampleOutput
+    name: String!
+    type: String!
+    base64str: String!
+  ): fileoutput
 }
 
 type Mutation {
   loginbuyer(
-    arg1: SampleInput!
-  ): SampleOutput
+    inputs: inputs!
+  ): outputs
 }
 
 type Mutation {
   logindeliveragent(
-    arg1: SampleInput!
-  ): SampleOutput
+    inputs: inputs!
+  ): outputs
 }
 
 type Mutation {
   loginseller(
-    arg1: SampleInput!
-  ): SampleOutput
+    inputs: inputs!
+  ): outputs
 }
 
 type Mutation {
   loginsuper(
-    arg1: SampleInput!
-  ): SampleOutput
+    inputs: inputs!
+  ): outputs
 }
 
 type Mutation {
   signupbuyer(
-    arg1: SampleInput!
-  ): SampleOutput
+    inputs: input_reg!
+  ): output_reg
 }
 
 type Mutation {
   signupdeliveragent(
-    arg1: SampleInput!
-  ): SampleOutput
+    inputs: input_reg!
+  ): output_reg
 }
 
 type Mutation {
   signupseller(
-    arg1: SampleInput!
-  ): SampleOutput
+    inputs: input_reg!
+  ): output_reg
 }
 
 type Mutation {
   signupsuperadmin(
-    arg1: SampleInput!
-  ): SampleOutput
+    input: input_reg!
+  ): output_reg
 }
 
 input SampleInput {
@@ -57,7 +59,33 @@ input SampleInput {
   password: String!
 }
 
+input inputs {
+  email: String!
+  password: String!
+}
+
+input input_reg {
+  fname: String!
+  lname: String!
+  email: String!
+  username: String!
+  password: String!
+  address: String!
+}
+
 type SampleOutput {
-  accessToken: String!
+  success: String!
+}
+
+type outputs {
+  accestoken: String!
+}
+
+type output_reg {
+  success: String!
+}
+
+type fileoutput {
+  file_path: String!
 }
 
