@@ -20,7 +20,7 @@ import { defineProps } from 'vue';
 import { product_query } from '../../Constants/Query/query';
 import { ref, computed } from 'vue';
 const props = defineProps({
-    id:
+    id:Number
 })
 const { error, result, loading } = useQuery(gql`
 query MyQuery {
