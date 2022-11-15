@@ -18,16 +18,19 @@
                 </tr>
             </thead>
             <tbody class="px-2">
-                <tr v-for="pro in product" :key="pro.id" class=" bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <td class="py-3 px-2">{{pro.name}}</td>
-                    <td class="py-3 px-2">{{pro.p_options.length}}</td>
+                <tr v-if="error">jknds</tr>
+                <tr v-if="loading">jknds</tr>
+                <tr v-else v-for="pro in product" :key="pro.id"
+                    class=" bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                    <td class="py-3 px-2">{{ pro.name }}</td>
+                    <td class="py-3 px-2">{{ pro.p_options.length }}</td>
                     <td class="py-3 px-2">0</td>
-                    <td class="py-3 px-2">{{pro.created_at}}</td>
+                    <td class="py-3 px-2">{{ pro.created_at }}</td>
                     <!-- <td class="py-3 px-2">patient.phone</td> -->
                     <!-- <td class="py-3 px-2">patient.address</td> -->
                     <td class="py-3 px-2">
                         <div class="flex space-x-2">
-                            <button>
+                            <button @click="view_product">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-eye" viewBox="0 0 16 16">
                                     <path
@@ -36,14 +39,14 @@
                                         d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                 </svg>
                             </button>
-                            <button>
+                            <button @click="edit_product">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green"
                                     class="bi bi-pencil" viewBox="0 0 16 16">
                                     <path
                                         d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                                 </svg>
                             </button>
-                            <button>
+                            <button @click="delete_product">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red"
                                     class="bi bi-trash" viewBox="0 0 16 16">
                                     <path
@@ -57,11 +60,10 @@
                     </td>
                 </tr>
             </tbody>
-            <div>{{product.options}}</div>
+            <div>{{ product.options }}</div>
         </table>
-        <div v-if="error">jknds</div>
-        <div v-if="loading">jknds</div>
-        <div v-else>{{ product }}</div>
+
+        <!-- <div v-else>{{ product }}</div> -->
     </div>
     <AddnewProductVue v-if="modal" v-on:close="modal = false"></AddnewProductVue>
 </template>
@@ -69,7 +71,7 @@
 <script setup>
 import AddnewProductVue from './AddProducts/AddnewProduct.vue';
 import { useQuery } from '@vue/apollo-composable';
-import {ProductStore } from '../../stores/ProductStores';
+import { ProductStore } from '../../stores/ProductStores';
 import gql from 'graphql-tag';
 import { product_query } from '../../Constants/Query/query';
 import { ref, computed } from 'vue';
