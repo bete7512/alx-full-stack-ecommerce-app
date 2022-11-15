@@ -55,6 +55,7 @@ query MyQuery {
       difference
       id
       image
+      price
       name
       p_id
     }
@@ -63,14 +64,13 @@ query MyQuery {
 
 `
 const insert_product = gql`
-mutation MyMutation($name: String = "", $about_product: String = "", $data: [p_options_insert_input!] = {}, $category_id: Int = 10, $sub_category_id: Int = 10) {
-  insert_product(objects: {name: $name, about_product: $about_product, p_options: {data: $data}, category_id: $category_id, sub_category_id: $sub_category_id}) {
-    returning {
-      name
-    }
+mutation MyMutation($about_product: String!, $category_id: Int!, $name: String!, $data: [p_options_insert_input!] = {}, $sub_category_id: Int!) {
+  insert_product(objects: {about_product: $about_product, category_id: $category_id, name: $name, p_options: {data: $data}, sub_category_id: $sub_category_id}) {
+    affected_rows
   }
 }
 `
+
 const category_query = gql`
 query MyQuery {
   category {
@@ -84,4 +84,33 @@ query MyQuery {
   }
 }
 `
-export {insert_company,seller_login,seller_signup,seller_company,insert_product,product_query,category_query}
+// const category_fetch = gql`
+// query MyQuery {
+//   category {
+//     name
+//     id
+//     sub_category_ids {
+//       name
+//       id
+//     }
+//   }
+// }
+
+// `
+const subcategory_query = gql`
+query MyQuery {
+  sub_category {
+    c_id
+    name
+    id
+  }
+}
+`
+const file_upload = gql`
+mutation MyMutation($base64str: String = "", $name: String = "", $type: String = "") {
+  fileupload(base64str: $base64str, name: $name, type: $type) {
+    file_path
+  }
+}
+`
+export { insert_company, seller_login, seller_signup, seller_company,subcategory_query, insert_product, product_query, category_query, file_upload }

@@ -18,7 +18,11 @@
 
 <script setup>
 import { CompanyStore } from '../../../stores/CompanyStore';
+import { useQuery } from '@vue/apollo-composable';
+import { ref,computed } from 'vue';
+
 const companyStore = CompanyStore();
+
 </script>
 
 <style>

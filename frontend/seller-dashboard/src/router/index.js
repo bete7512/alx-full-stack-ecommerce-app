@@ -57,7 +57,7 @@ const router = createRouter({
     {
       path: '/addnewproduct',
       name: 'addnewproduct',
-      component: () => import('../pages/Products/AddnewProduct.vue'),
+      component: () => import('../pages/Products/AddProducts/AddnewProduct.vue'),
       meta: { layout: 'main' }
     },
     {

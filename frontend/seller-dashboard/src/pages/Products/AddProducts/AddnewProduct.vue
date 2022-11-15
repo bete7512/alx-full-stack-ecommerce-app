@@ -21,25 +21,32 @@
                 <div :class="[card2 ? activeClass : inactiveClass]"
                     class="border-8 rounded-full p-4 h-8 w-8 flex justify-center items-center text-lg font-extrabold border-blue-800">
                     1</div>
-                <!-- <div :class="[card3 ? activeLine : inactiveLine]" class="h-2 w-8 bg-blue-800"></div> -->
-                <!-- <div :class="[card3 ? activeClass : inactiveClass]"
+                <div :class="[card3 ? activeLine : inactiveLine]" class="h-2 w-8 bg-blue-800"></div>
+                <div :class="[card3 ? activeClass : inactiveClass]"
                     class="border-8 rounded-full p-4 h-8 w-8 flex justify-center items-center text-lg font-extrabold border-blue-800">
-                    3</div>                 -->
+                    3</div>
             </div>
             <div>
-                <div class=" justify-center  bg-white py-4  items-center  px-10" @submit.preventDefault="onSubmit"
-                >
-                <!-- :validation-schema="schema" v-slot="{ errors }" -->
+                <div class=" justify-center  bg-white py-4  items-center  px-10" @submit.preventDefault="onSubmit">
+                    <!-- :validation-schema="schema" v-slot="{ errors }" -->
                     <Card1 v-if="card1"></Card1>
                     <Card2 v-if="card2"></Card2>
-                    <!-- <Card3 v-if="card3"></Card3> -->
-                </div>
-            </div>
+                    <Card3 v-if="card3"></Card3>
 
-            <div class="flex pb-2 justify-center space-x-2 items-center ">
+                </div>
+                <!-- {{ product.options }} -->
+            </div>
+            <div class="flex justify-center items-center">
+                <button v-if="card3" @click="add_options" class="px-4  py-2 bg-amber-600 rounded-lg">Add another
+                    options</button>
+            </div>
+            <div class="flex pb-2 bottom-0  justify-center space-x-2 items-center ">
                 <button v-if="!card1" class=" px-10 py-3 bg-cyan-700 rounded-lg " @click="previous()">Previous</button>
-                <button v-if="!card2" class=" px-10 py-3 bg-cyan-700 rounded-lg " @click="next()">Next</button>
-                <button v-if="card2" class=" px-10 py-3 bg-cyan-700 rounded-lg " @click="onSubmit()">Submit</button>
+                <button v-if="!card3" class=" px-10 py-3 bg-cyan-700 rounded-lg " @click="next()">Next</button>
+                <button v-if="card3" class=" px-10 py-3 bg-cyan-700 rounded-lg " @click="onSubmit()">Submit</button>
+
+            </div>
+            <div class="flex justify-center items-center">
             </div>
         </div>
     </div>
@@ -50,41 +57,52 @@ import { Form } from 'vee-validate';
 import * as Yup from 'yup';
 import Card1 from './Card1.vue';
 import Card2 from './Card2.vue';
+import Card3 from './Card3.vue';
 import { ref, onMounted } from 'vue'
 import { defineEmits } from 'vue';
-import { CompanyStore } from '../../../stores/CompanyStore';
+import { ProductStore } from '../../../stores/ProductStores';
 const activeClass = ref('bg-blue-800 border-blue-800');
 const activeLine = ref('');
 const inactiveClass = ref('border-blue-200');
 const inactiveLine = ref('bg-blue-200');
 const card1 = ref(true)
 const card2 = ref(false)
-
+const card3 = ref(false)
+const product = ProductStore()
 const next = () => {
     if (card1.value == true) {
         card1.value = false
-        // card3.value = false
+        card3.value = false
         card2.value = true
     }
     else if (card2.value == true) {
         card1.value = false
         card2.value = false
-        // card3.value = true
+        card3.value = true
     }
 
 }
-const company = CompanyStore()
 const previous = () => {
     if (card2.value == true) {
         card1.value = true
         card2.value = false
-        // card3.value = false
+        card3.value = false
     }
-    // else if (card3.value == true) {
-    //     card1.value = false
-    //     card3.value = false
-    //     card2.value = true
-    // }
+    else if (card3.value == true) {
+        card1.value = false
+        card3.value = false
+        card2.value = true
+    }
+
+}
+const add_options = async () => {
+   
+    await product.add_options() 
+    card3.value = false
+    card2.value = true
+    product.o_name = ''
+    product.price = ''
+    product.difference = ''
 
 }
 // const schema = Yup.object().shape({
@@ -95,11 +113,11 @@ const previous = () => {
 //         .required('Password is required'),
 // })
 const onSubmit = async () => {
+    // await product.add_product()
     console.log(localStorage.getItem('Apollotoken'));
-    let done  = await company.insert_company()
-    if(done){
-        location.reload()
-        emits('close')
+    let done = await product.insert_product()
+    if (done) {
+        console.log("product succefully added");
     }
     // router.push('/dashboard')
 }
