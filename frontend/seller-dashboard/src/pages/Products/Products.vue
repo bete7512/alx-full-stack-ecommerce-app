@@ -19,7 +19,7 @@
             </thead>
             <tbody class="px-2">
                 <tr v-for="pro in product" :key="pro.id" class=" bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <td class="py-3 px-2">patient.name</td>
+                    <td class="py-3 px-2">{{pro.name}}</td>
                     <td class="py-3 px-2">patient.health_num</td>
                     <td class="py-3 px-2">patient.p_id</td>
                     <td class="py-3 px-2">patient.registered_at</td>
@@ -77,6 +77,7 @@ const { error, result, loading } = useQuery(gql`
 query MyQuery {
   product {
     about_product
+    id
     category {
       name
     }
