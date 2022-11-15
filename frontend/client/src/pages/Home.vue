@@ -30,7 +30,7 @@
                             </div>
                             <div class="pl-10 flex">
                                 <input type="checkbox">
-                                <span>Mobile  </span>
+                                <span>Mobile </span>
                             </div>
                         </div>
                         <div>
@@ -44,8 +44,8 @@
                             </div>
                             <div class="pl-10 flex">
                                 <input type="checkbox">
-                                <span>fashion  </span>
-                            </div> 
+                                <span>fashion </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,21 +54,35 @@
         <div class=" pt-4 space-x-3 sm:w-3/4  w-full">
             <div class="">
                 <h1 class="flex justify-center text-xl font-bold">Popular Products</h1>
-                <div class=" flex flex-wrap justify-center space-x-4 pt-5">
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
-                    <Card></Card>
+                <div v-if="error">error</div>
+                <div v-else-if="loading">loading</div>
+                <!-- <div v-else>{{product}}</div> -->
+                <div v-else class="flex flex-wrap justify-center space-x-4">
+                    <div class="  pt-5 px-4" v-for="p in product" :key="p.id">
+                        <Card :product="p"></Card>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     </div>
 </template>
 <script setup>
-import {ref} from 'vue'
+import { useQuery } from '@vue/apollo-composable'
+import { ref, computed } from 'vue'
+import { GET_PRODUCTS } from '../Constants/Query';
 import Card from '../components/Products/Card.vue'
+const { error, loading, result } = useQuery(
+    GET_PRODUCTS,
+    {
+        fetchPolicy: 'network-only',
+    }
+)
+const product = computed(() => result.value?.product ?? []);
+console.log(product);
 const test = ref(4)
 </script>
 <style>
-    
+
 </style>
