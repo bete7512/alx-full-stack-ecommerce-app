@@ -12,8 +12,8 @@
                     <th class="py-3 px-2">Product options</th>
                     <th class="py-3 px-2">Products Reviews</th>
                     <th class="py-3 px-2">Release Date</th>
-                    <th class="py-3 px-2">Price</th>
-                    <th class="py-3 px-2">for test</th>
+                    <!-- <th class="py-3 px-2">Price</th> -->
+                    <!-- <th class="py-3 px-2">for test</th> -->
                     <th class="py-3 px-2">activity</th>
                 </tr>
             </thead>
@@ -23,8 +23,8 @@
                     <td class="py-3 px-2">{{pro.p_options.length}}</td>
                     <td class="py-3 px-2">0</td>
                     <td class="py-3 px-2">{{pro.created_at}}</td>
-                    <td class="py-3 px-2">patient.phone</td>
-                    <td class="py-3 px-2">patient.address</td>
+                    <!-- <td class="py-3 px-2">patient.phone</td> -->
+                    <!-- <td class="py-3 px-2">patient.address</td> -->
                     <td class="py-3 px-2">
                         <div class="flex space-x-2">
                             <button>
