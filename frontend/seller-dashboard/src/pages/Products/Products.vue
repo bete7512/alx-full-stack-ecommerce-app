@@ -98,7 +98,15 @@ query MyQuery {
 });
 const products = ProductStore();
 const product = computed(() => result.value?.product ?? []);
-console.log("congratulation from here" + product);
+const edit_product = ()=>{
+
+}
+const view_product = ()=>{
+
+}
+const delete_product = ()=>{
+    
+}
 const modal = ref(false)
 </script>
 
