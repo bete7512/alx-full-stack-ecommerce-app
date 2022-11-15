@@ -5,7 +5,9 @@
             <div class="space-y-4  auto sm:w-1/2 w-full  bg-white rounded-md">
                 <div v-if="error">error in fetching products</div>
                 <div v-else-if="loading">loading Please Wait</div>
-                
+                <div v-else >
+
+                </div>
             </div>
         </div>
     </div>
@@ -14,8 +16,12 @@
 import { useQuery } from '@vue/apollo-composable';
 import { ProductStore } from '../../stores/ProductStores';
 import gql from 'graphql-tag';
+import { defineProps } from 'vue';
 import { product_query } from '../../Constants/Query/query';
 import { ref, computed } from 'vue';
+const props = defineProps({
+    id:
+})
 const { error, result, loading } = useQuery(gql`
 query MyQuery {
   product {
