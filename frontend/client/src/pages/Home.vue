@@ -58,8 +58,6 @@
                         <Card :product="p"></Card>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
