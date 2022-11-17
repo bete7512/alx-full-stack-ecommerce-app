@@ -1,4 +1,20 @@
 SET check_function_bodies = false;
+CREATE TABLE public.seller_company (
+    id integer NOT NULL,
+    name text,
+    about_company text,
+    verified boolean,
+    owner integer,
+    licence_number integer,
+    address text
+);
+CREATE FUNCTION public.seller_company_for_user(company public.seller_company, hasura_session json) RETURNS SETOF public.seller_company
+    LANGUAGE sql STABLE
+    AS $$
+    SELECT *
+    FROM seller_company
+    WHERE company.owner = CAST((hasura_session ->> 'x-hasura-user-id') AS INTEGER)
+$$;
 CREATE FUNCTION public.set_current_timestamp_updated_at() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
@@ -16,10 +32,11 @@ CREATE TABLE public.buyer (
     email text NOT NULL,
     password text NOT NULL,
     id integer NOT NULL,
-    v_code_for_reg text NOT NULL,
-    v_code_for_forg text NOT NULL,
-    expire_time timestamp with time zone NOT NULL,
-    status boolean NOT NULL
+    v_code_for_reg text,
+    v_code_for_forg text,
+    expire_time timestamp with time zone,
+    status boolean,
+    address text
 );
 CREATE SEQUENCE public.buyer_id_seq
     AS integer
@@ -109,8 +126,9 @@ CREATE TABLE public.p_options (
     id integer NOT NULL,
     name text,
     difference text,
-    image text,
-    p_id integer
+    p_id integer,
+    price real,
+    image_url text
 );
 CREATE SEQUENCE public.p_options_id_seq
     AS integer
@@ -125,10 +143,11 @@ CREATE TABLE public.product (
     created_at timestamp with time zone DEFAULT now(),
     updated_at timestamp with time zone DEFAULT now(),
     about_product text,
-    option_id integer,
     category_id integer,
     owner integer,
-    sub_category_id integer
+    sub_category_id integer,
+    name text,
+    option_id integer
 );
 CREATE SEQUENCE public.product_id_seq
     AS integer
@@ -143,19 +162,14 @@ CREATE TABLE public.seller (
     last_name text NOT NULL,
     email text NOT NULL,
     password text NOT NULL,
-    v_code_for_reg text NOT NULL,
-    v_code_for_for text NOT NULL,
-    expire_time timestamp with time zone NOT NULL,
-    status boolean NOT NULL,
-    id integer NOT NULL
-);
-CREATE TABLE public.seller_company (
+    v_code_for_reg text,
+    v_code_for_for text,
+    expire_time timestamp with time zone,
+    status boolean,
     id integer NOT NULL,
-    name text,
-    about_company text,
-    verified boolean,
-    owner integer,
-    licence_number integer
+    address text,
+    company integer,
+    have_company boolean DEFAULT false
 );
 CREATE SEQUENCE public.seller_company_id_seq
     AS integer
@@ -173,7 +187,7 @@ CREATE SEQUENCE public.seller_id_seq
     NO MAXVALUE
     CACHE 1;
 ALTER SEQUENCE public.seller_id_seq OWNED BY public.seller.id;
-CREATE TABLE public.sub_category_id (
+CREATE TABLE public.sub_category (
     name text NOT NULL,
     c_id integer NOT NULL,
     id integer NOT NULL
@@ -185,7 +199,7 @@ CREATE SEQUENCE public.sub_category_id_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER SEQUENCE public.sub_category_id_id_seq OWNED BY public.sub_category_id.id;
+ALTER SEQUENCE public.sub_category_id_id_seq OWNED BY public.sub_category.id;
 CREATE TABLE public.supper_admin (
     first_name text NOT NULL,
     last_name text NOT NULL,
@@ -225,7 +239,7 @@ ALTER TABLE ONLY public.p_options ALTER COLUMN id SET DEFAULT nextval('public.p_
 ALTER TABLE ONLY public.product ALTER COLUMN id SET DEFAULT nextval('public.product_id_seq'::regclass);
 ALTER TABLE ONLY public.seller ALTER COLUMN id SET DEFAULT nextval('public.seller_id_seq'::regclass);
 ALTER TABLE ONLY public.seller_company ALTER COLUMN id SET DEFAULT nextval('public.seller_company_id_seq'::regclass);
-ALTER TABLE ONLY public.sub_category_id ALTER COLUMN id SET DEFAULT nextval('public.sub_category_id_id_seq'::regclass);
+ALTER TABLE ONLY public.sub_category ALTER COLUMN id SET DEFAULT nextval('public.sub_category_id_id_seq'::regclass);
 ALTER TABLE ONLY public.supper_admin ALTER COLUMN id SET DEFAULT nextval('public.supper_admin_id_seq'::regclass);
 ALTER TABLE ONLY public.wishlist ALTER COLUMN id SET DEFAULT nextval('public.wishlist_id_seq'::regclass);
 ALTER TABLE ONLY public.buyer
@@ -254,7 +268,7 @@ ALTER TABLE ONLY public.seller
     ADD CONSTRAINT seller_email_key UNIQUE (email);
 ALTER TABLE ONLY public.seller
     ADD CONSTRAINT seller_pkey PRIMARY KEY (id);
-ALTER TABLE ONLY public.sub_category_id
+ALTER TABLE ONLY public.sub_category
     ADD CONSTRAINT sub_category_id_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.supper_admin
     ADD CONSTRAINT supper_admin_email_key UNIQUE (email);
@@ -281,10 +295,10 @@ ALTER TABLE ONLY public.product
 ALTER TABLE ONLY public.product
     ADD CONSTRAINT product_option_id_fkey FOREIGN KEY (option_id) REFERENCES public.p_options(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE ONLY public.product
-    ADD CONSTRAINT product_owner_fkey FOREIGN KEY (owner) REFERENCES public.seller_company(id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE ONLY public.product
-    ADD CONSTRAINT product_sub_category_id_fkey FOREIGN KEY (sub_category_id) REFERENCES public.sub_category_id(id) ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT product_owner_fkey FOREIGN KEY (owner) REFERENCES public.seller(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ONLY public.seller
+    ADD CONSTRAINT seller_company_fkey FOREIGN KEY (company) REFERENCES public.seller_company(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE ONLY public.seller_company
     ADD CONSTRAINT seller_company_owner_fkey FOREIGN KEY (owner) REFERENCES public.seller(id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE ONLY public.sub_category_id
+ALTER TABLE ONLY public.sub_category
     ADD CONSTRAINT sub_category_id_c_id_fkey FOREIGN KEY (c_id) REFERENCES public.category(id) ON UPDATE CASCADE ON DELETE CASCADE;

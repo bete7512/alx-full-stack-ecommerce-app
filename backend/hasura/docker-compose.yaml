@@ -42,5 +42,7 @@ services:
       HASURA_GRAPHQL_ADMIN_SECRET: "myadminsecretkey"
       HASURA_GRAPHQL_JWT_SECRET: '{"type": "HS256","key": "MIIDDTCCAfWgAwIBAgIJJACYXtGC0O6GMA0GCSqGSIb3DQEBCwUAMCQxIjAgBgNV"}'
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: 'anonymous'
+      # HASURA_GRAPHQL_MIGRATIONS_DIR: "/migrations"
+      # HASURA_GRAPHQL_METADATA_DIR: "/metadata"
 volumes:
   db_data:

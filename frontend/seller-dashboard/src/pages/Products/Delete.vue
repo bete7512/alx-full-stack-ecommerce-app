@@ -35,11 +35,12 @@
     emit('canceldelete')
   }
   const { mutate: deleterecipe } = useMutation(gql`
-  mutation MyMutation($id: Int!) {
-    delete_recipe_by_pk(id: $id) {
-      id
-    }
+mutation MyMutation($id: Int!) {
+  delete_product_by_pk(id: $id) {
+    id
   }
+}
+
    `, () => ({
     variables: {
       id: props.id

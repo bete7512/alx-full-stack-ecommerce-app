@@ -3,7 +3,11 @@ require('dotenv').config()
 const app = express();
 app.use(express.json({ limit: '200mb' }));
 // app.use(express.urlencoded({extended:true}));
-
+// app.get('/sol',(req,res)=>{
+//   res.send({
+//     message:"hello sol"
+//   })
+// })
 app.post('/:route', (req, res) => {
   try {
     console.log("from here");

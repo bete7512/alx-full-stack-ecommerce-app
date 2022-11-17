@@ -2,7 +2,7 @@ actions:
   - name: fileupload
     definition:
       kind: synchronous
-      handler: http://localhost:3000/fileupload
+      handler: http://host.docker.internal:3000/fileupload
     permissions:
       - role: anonymous
       - role: deliveragent
@@ -12,7 +12,11 @@ actions:
   - name: loginbuyer
     definition:
       kind: synchronous
-      handler: http://localhost:3000/loginbuyer
+      handler: http://host.docker.internal:3000/buyerl
+    permissions:
+      - role: seller
+      - role: anonymous
+      - role: buyer
   - name: logindeliveragent
     definition:
       kind: synchronous
@@ -33,8 +37,12 @@ actions:
   - name: signupbuyer
     definition:
       kind: synchronous
-      handler: http://localhost:3000/signupbuyer
+      handler: http://host.docker.internal:3000/buyers
     permissions:
+      - role: deliveragent
+      - role: superadmin
+      - role: seller
+      - role: buyer
       - role: anonymous
   - name: signupdeliveragent
     definition:

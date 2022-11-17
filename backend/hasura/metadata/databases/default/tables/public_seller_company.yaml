@@ -5,6 +5,14 @@ object_relationships:
   - name: seller
     using:
       foreign_key_constraint_on: owner
+array_relationships:
+  - name: sellers
+    using:
+      foreign_key_constraint_on:
+        column: company
+        table:
+          name: seller
+          schema: public
 insert_permissions:
   - role: seller
     permission:
@@ -19,6 +27,17 @@ insert_permissions:
         - name
         - owner
 select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - verified
+        - id
+        - licence_number
+        - owner
+        - about_company
+        - address
+        - name
+      filter: {}
   - role: seller
     permission:
       columns:

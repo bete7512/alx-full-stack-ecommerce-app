@@ -54,7 +54,7 @@ query MyQuery {
     p_options {
       difference
       id
-      image
+      image_url
       price
       name
       p_id

@@ -36,10 +36,44 @@
                 </div>
             </div>
             <div class="flex justify-between items-center space-x-3">
-                <div class="flex justify-center items-center space-x-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/> <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/> </svg>
-                    <button class="text-lg">signin</button>
+                <div v-if="!user.userLoggedin" class="flex justify-center items-center space-x-1">{{ user.userLoggedin
+                }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                        <path fill-rule="evenodd"
+                            d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                    </svg>
+                    <router-link to="/login">signin</router-link>
                 </div>
+                <!-- <div class="relative" v-if="user.userLoggedin">
+                    <button @click="dropdownOpen = !dropdownOpen"
+                        class="relative z-10 block w-8 h-8 overflow-hidden rounded-full shadow focus:outline-none">
+                        <img class="object-cover w-full h-full" src="../../assets/meron.jpg" alt="Your avatar" />
+                    </button>
+
+                    <div v-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 z-10 w-full h-full">
+                    </div>
+
+                    <transition enter-active-class="transition duration-150 ease-out transform"
+                        enter-from-class="scale-95 opacity-0" enter-to-class="scale-100 opacity-100"
+                        leave-active-class="transition duration-150 ease-in transform"
+                        leave-from-class="scale-100 opacity-100" leave-to-class="scale-95 opacity-0">
+                        <div v-show="dropdownOpen"
+                            class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl">
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Announcement</a>
+
+                            <router-link to="/"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">
+                                Log out
+                            </router-link>
+                        </div>
+                    </transition>
+                </div> -->
                 <div class="flex space-x-1 justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                         class="bi bi-cart" viewBox="0 0 16 16">
@@ -56,6 +90,33 @@
                     </svg>
                     <button class="text-lg">Wishlist</button>
                 </div>
+                <div class="relative" v-if="user.userLoggedin">
+                    <button @click="dropdownOpen = !dropdownOpen"
+                        class="relative z-10 block w-8 h-8 overflow-hidden rounded-full shadow focus:outline-none">
+                        <img class="object-cover w-full h-full" src="../../assets/meron.jpg" alt="Your avatar" />
+                    </button>
+
+                    <div v-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 z-10 w-full h-full">
+                    </div>
+
+                    <transition enter-active-class="transition duration-150 ease-out transform"
+                        enter-from-class="scale-95 opacity-0" enter-to-class="scale-100 opacity-100"
+                        leave-active-class="transition duration-150 ease-in transform"
+                        leave-from-class="scale-100 opacity-100" leave-to-class="scale-95 opacity-0">
+                        <div v-show="dropdownOpen"
+                            class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl">
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Announcement</a>
+
+                            <router-link to="/"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">
+                                Log out
+                            </router-link>
+                        </div>
+                    </transition>
+                </div>
 
             </div>
         </div>
@@ -63,6 +124,9 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import { UserStore } from '../../stores/userStore';
+const user = UserStore()
+const dropdownOpen = ref(false)
 </script>
 <style>
 

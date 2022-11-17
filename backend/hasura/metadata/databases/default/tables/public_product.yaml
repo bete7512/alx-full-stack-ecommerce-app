@@ -8,9 +8,18 @@ object_relationships:
   - name: p_option
     using:
       foreign_key_constraint_on: option_id
-  - name: subCategoryIdBySubCategoryId
+  - name: seller
     using:
-      foreign_key_constraint_on: sub_category_id
+      foreign_key_constraint_on: owner
+  - name: sub_category_ob
+    using:
+      manual_configuration:
+        column_mapping:
+          sub_category_id: id
+        insertion_order: null
+        remote_table:
+          name: sub_category
+          schema: public
 array_relationships:
   - name: orders
     using:
@@ -27,45 +36,11 @@ array_relationships:
           name: p_options
           schema: public
 insert_permissions:
-  - role: anonymous
-    permission:
-      check: {}
-      columns:
-        - category_id
-        - id
-        - option_id
-        - owner
-        - sub_category_id
-        - about_product
-        - created_at
-        - updated_at
-  - role: buyer
-    permission:
-      check: {}
-      columns:
-        - category_id
-        - id
-        - option_id
-        - owner
-        - sub_category_id
-        - about_product
-        - created_at
-        - updated_at
-  - role: deliveragent
-    permission:
-      check: {}
-      columns:
-        - category_id
-        - id
-        - option_id
-        - owner
-        - sub_category_id
-        - about_product
-        - created_at
-        - updated_at
   - role: seller
     permission:
       check: {}
+      set:
+        owner: x-hasura-User-Id
       columns:
         - about_product
         - category_id
@@ -80,14 +55,15 @@ insert_permissions:
     permission:
       check: {}
       columns:
-        - category_id
         - id
-        - option_id
-        - owner
-        - sub_category_id
-        - about_product
         - created_at
         - updated_at
+        - about_product
+        - category_id
+        - owner
+        - sub_category_id
+        - name
+        - option_id
 select_permissions:
   - role: anonymous
     permission:
@@ -115,18 +91,6 @@ select_permissions:
         - sub_category_id
         - updated_at
       filter: {}
-  - role: deliveragent
-    permission:
-      columns:
-        - category_id
-        - id
-        - option_id
-        - owner
-        - sub_category_id
-        - about_product
-        - created_at
-        - updated_at
-      filter: {}
   - role: seller
     permission:
       columns:
@@ -139,22 +103,37 @@ select_permissions:
         - owner
         - sub_category_id
         - updated_at
-      filter: {}
+      filter:
+        owner:
+          _eq: X-Hasura-User-Id
   - role: superadmin
     permission:
       columns:
-        - about_product
         - category_id
-        - created_at
         - id
-        - name
         - option_id
         - owner
         - sub_category_id
+        - about_product
+        - name
+        - created_at
         - updated_at
       filter: {}
 update_permissions:
-  - role: anonymous
+  - role: seller
+    permission:
+      columns:
+        - category_id
+        - id
+        - owner
+        - sub_category_id
+        - about_product
+        - name
+        - created_at
+        - updated_at
+      filter: {}
+      check: {}
+  - role: superadmin
     permission:
       columns:
         - category_id
@@ -163,7 +142,17 @@ update_permissions:
         - owner
         - sub_category_id
         - about_product
+        - name
         - created_at
         - updated_at
       filter: {}
-      check: null
+      check: {}
+delete_permissions:
+  - role: seller
+    permission:
+      backend_only: false
+      filter: {}
+  - role: superadmin
+    permission:
+      backend_only: false
+      filter: {}

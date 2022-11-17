@@ -30,7 +30,7 @@
                     <!-- <td class="py-3 px-2">patient.address</td> -->
                     <td class="py-3 px-2">
                         <div class="flex space-x-2">
-                            <button @click="view_product">
+                            <button @click="view_product(pro.id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-eye" viewBox="0 0 16 16">
                                     <path
@@ -46,7 +46,7 @@
                                         d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                                 </svg>
                             </button>
-                            <button @click="delete_product">
+                            <button @click="delete_product(pro.id)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red"
                                     class="bi bi-trash" viewBox="0 0 16 16">
                                     <path
@@ -66,6 +66,8 @@
         <!-- <div v-else>{{ product }}</div> -->
     </div>
     <AddnewProductVue v-if="modal" v-on:close="modal = false"></AddnewProductVue>
+    <ProductDetail :id="id_param" v-if="detail_product" v-on:close="detail_product = false"></ProductDetail>
+    <Delete v-if="isDelete" v-on:canceldelete="isDelete = false" :id="id_param" v-on:deletenotify="isDelete = false"></Delete>
 </template>
 
 <script setup>
@@ -73,6 +75,8 @@ import AddnewProductVue from './AddProducts/AddnewProduct.vue';
 import { useQuery } from '@vue/apollo-composable';
 import { ProductStore } from '../../stores/ProductStores';
 import gql from 'graphql-tag';
+import Delete from './Delete.vue'
+import ProductDetail from './ProductDetail.vue';
 import { product_query } from '../../Constants/Query/query';
 import { ref, computed } from 'vue';
 const { error, result, loading } = useQuery(gql`
@@ -96,17 +100,25 @@ query MyQuery {
 `, {
     fetchPolicy: 'network-only',
 });
+const isDelete = ref(false);
 const products = ProductStore();
 const product = computed(() => result.value?.product ?? []);
+const id_param = ref(0)
 const edit_product = ()=>{
 
 }
-const view_product = ()=>{
+const delete_product = (id)=>{
+    id_param.value = id
+    isDelete.value = true;
+}
+const detail_product  = ref(false)
+
+const view_product = (id)=>{
+    id_param.value = id
+    detail_product.value = true
 
 }
-const delete_product = ()=>{
-    
-}
+
 const modal = ref(false)
 </script>
 

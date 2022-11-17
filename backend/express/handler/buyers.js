@@ -1,20 +1,27 @@
 require('dotenv').config()
 const bcrypt = require('bcrypt')
-const fetch = require('node-fetch')
 const HASURA_SIGNUP_OPERATION = `
-mutation MyMutation($username: String!, $password: String!, $email: String!, $lname: String!, $fname: String!) {
- insert_users_one(object: {fname: $fname, lname: $lname, email: $email, username: $username, password: $password}) {
-   id
- }
-}
+mutation MyMutation($email: String!, $first_name: String!, $last_name: String!, $password: String!, $address: String!) {
+	insert_buyer(objects: {email: $email, first_name: $first_name, last_name: $last_name, password: $password, address: $address}) {
+	  affected_rows
+	}
+  }
+  
 `;
+const find_query = `
+query MyQuery($email: String = "") {
+	buyer(where: {email: {_eq: $email}}, limit: 1) {
+	  email
+	}
+  }
+`
 const execute = async (variables) => {
 	const fetchResponse = await fetch(
-		"https://sunny-glowworm-92.hasura.app/v1/graphql",
+		"http://localhost:8080/v1/graphql",
 		{
 			method: 'POST',
 			headers: {
-				'x-hasura-admin-secret': 'KwDGpDWBN8ZVHTUH7ovT2y7UOHBK4J62R9F6a4ETnGnK7Pn7LJSaqQcATyDYtYgE'
+				'x-hasura-admin-secret': 'myadminsecretkey'
 			},
 			body: JSON.stringify({
 				query: HASURA_SIGNUP_OPERATION,
@@ -23,16 +30,17 @@ const execute = async (variables) => {
 		}
 	);
 	const data = await fetchResponse.json();
-	console.log('DEBUG: ', data);
+	console.log(data);
 	return data;
 };
 const handler = async (req, res) => {
-	console.log("what happened here");
-	const { fname, lname, username, email, password } = req.body.input.arg1;
-	const finduser = require('../checker/findusername')
-	const { data, error } = await finduser({ username, email })
-	const user = data["users"][0]
-	if (user) {
+	const { fname, lname, email, password, address } = req.body.input.inputs;
+	const finduser = require('../FInder/find')
+	const { data, error } = await finduser({email:email}, find_query)
+	console.log(data);
+	console.log("from here");
+	const user = data["buyer"]
+	if (user.length > 0) {
 		return res.status(400).json({
 			message: 'you are  registered no registratrion again'
 		})
@@ -42,18 +50,18 @@ const handler = async (req, res) => {
 		const salt = bcrypt.genSaltSync(saltRounds);
 		const hashed = bcrypt.hashSync(password, salt);
 		const variables = {
-			fname: fname,
-			lname: lname,
-			username: username,
+			first_name: fname,
+			last_name: lname,
 			email: email,
-			password: hashed
+			password: hashed,
+			address: address
 		}
+		console.log("one step here");
 		const { data, errors } = await execute(variables);
+		console.log(data);
 		if (data) {
-			console.log(errors);
-			console.log(data)
 			res.send({
-				Success: "You are succefully registered"
+				success: "You are succefully registered"
 			})
 		}
 		else {

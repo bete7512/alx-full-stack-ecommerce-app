@@ -19,27 +19,30 @@ insert_permissions:
       check: {}
       columns:
         - id
-        - p_id
-        - difference
-        - image
         - name
+        - difference
+        - p_id
+        - price
+        - image_url
 select_permissions:
   - role: anonymous
     permission:
       columns:
         - id
-        - p_id
-        - difference
-        - image
         - name
+        - difference
+        - p_id
+        - price
+        - image_url
       filter: {}
   - role: buyer
     permission:
       columns:
         - id
         - p_id
+        - price
         - difference
-        - image
+        - image_url
         - name
       filter: {}
   - role: seller
@@ -47,16 +50,8 @@ select_permissions:
       columns:
         - id
         - p_id
+        - price
         - difference
-        - image
-        - name
-      filter: {}
-  - role: superadmin
-    permission:
-      columns:
-        - id
-        - p_id
-        - difference
-        - image
+        - image_url
         - name
       filter: {}

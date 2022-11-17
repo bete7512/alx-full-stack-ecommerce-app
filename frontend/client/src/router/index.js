@@ -26,6 +26,13 @@ const router = createRouter({
       component: Signup,
       meta: { layout: "empty" },
     },
+    {
+      path:'/product/:id',
+      name:'productdetails',
+      component:()=>import('../pages/ProductDetail.vue'),
+      meta: { layout: "main" }
+
+    }
 
     // {
     //   path: '/about',
