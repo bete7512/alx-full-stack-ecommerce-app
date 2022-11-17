@@ -7,6 +7,8 @@ provideApolloClient(apolloclient);
 export const ProductStore = defineStore("products", {
     state: () => ({
         categories:[],
+        category:'',
+        subcategory:'',
     }),
     actions: {
         async signup(fname, lname, email, password, address, username) {
