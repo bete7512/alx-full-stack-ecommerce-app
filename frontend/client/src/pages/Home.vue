@@ -21,7 +21,7 @@
                         </div>
                         <div v-for="cat in products.categories" :key="cat.id">
                             <div class="flex space-x-2 text-lg font-bold">
-                                <input v-model="products.categor" type="checkbox">
+                                <input v-model="products.category" type="checkbox">
                                 <span>{{cat.name}}</span>
                             </div>
                             <div class="pl-10 flex" v-for="sub in cat.sub_category_ids" :key="sub.id">
