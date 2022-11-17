@@ -42,5 +42,51 @@ mutation MyMutation($email: String!, $password: String!) {
 }
 `
 
+const CATEGORY_FECTH = gql`
+query MyQuery {
+  category {
+    id
+    name
+    sub_category_ids {
+      c_id
+      id
+      name
+    }
+  }
+}
+`
+const GET_PRODUCT_DETAIL = gql`
+query MyQuery($id: Int!) {
+  product_by_pk(id: $id) {
+    about_product
+    category {
+      name
+    }
+    name
+    p_options {
+      difference
+      id
+      image_url
+      name
+      price
+    }
+    seller {
+      address
+      company
+      email
+      first_name
+      last_name
+    }
+    sub_category_ob {
+      name
+      id
+    }
+    created_at
+    category_id
+    id
+  }
+}
 
-export {GET_PRODUCTS, buyer_signup, buyer_login}
+`
+
+export {GET_PRODUCTS, buyer_signup, buyer_login,CATEGORY_FECTH,GET_PRODUCT_DETAIL}

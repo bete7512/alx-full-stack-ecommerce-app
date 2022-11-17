@@ -37,6 +37,22 @@ select_permissions:
         - v_code_for_reg
         - expire_time
       filter: {}
+  - role: buyer
+    permission:
+      columns:
+        - have_company
+        - status
+        - company
+        - id
+        - address
+        - email
+        - first_name
+        - last_name
+        - password
+        - v_code_for_for
+        - v_code_for_reg
+        - expire_time
+      filter: {}
   - role: seller
     permission:
       columns:

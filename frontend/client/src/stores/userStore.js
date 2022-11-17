@@ -6,7 +6,7 @@ import router from '../router/index'
 provideApolloClient(apolloclient);
 export const UserStore = defineStore("user", {
     state: () => ({
-        user: "am here for a reason not for a season",
+        userLoggedin:localStorage.getItem('Apollotoken') ? true : false,
     }),
     actions: {
         async signup(fname, lname, email, password, address, username) {

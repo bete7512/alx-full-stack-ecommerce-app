@@ -19,21 +19,17 @@
                             <button type="submit"
                                 class="text-white absolute right-0 bottom-0 top-0 bg-orange-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                         </div>
-                        <div>
+                        <div v-for="cat in products.categories" :key="cat.id">
                             <div class="flex space-x-2 text-lg font-bold">
                                 <input type="checkbox">
-                                <span>Electronics</span>
+                                <span>{{cat.name}}</span>
                             </div>
-                            <div class="pl-10 flex">
+                            <div class="pl-10 flex" v-for="sub in cat.sub_category_ids" :key="sub.id">
                                 <input type="checkbox">
-                                <span>Computer </span>
-                            </div>
-                            <div class="pl-10 flex">
-                                <input type="checkbox">
-                                <span>Mobile </span>
+                                <span>{{sub.name}}</span>
                             </div>
                         </div>
-                        <div>
+                        <!-- <div>
                             <div class="flex space-x-2 text-lg font-bold">
                                 <input type="checkbox">
                                 <span>Clothes</span>
@@ -46,7 +42,7 @@
                                 <input type="checkbox">
                                 <span>fashion </span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -70,9 +66,10 @@
 </template>
 <script setup>
 import { useQuery } from '@vue/apollo-composable'
-import { ref, computed } from 'vue'
+import { ref, computed,onMounted } from 'vue'
 import { GET_PRODUCTS } from '../Constants/Query';
 import Card from '../components/Products/Card.vue'
+import { ProductStore } from '../stores/productStore';
 const { error, loading, result } = useQuery(
     GET_PRODUCTS,
     {
@@ -80,6 +77,11 @@ const { error, loading, result } = useQuery(
     }
 )
 const product = computed(() => result.value?.product ?? []);
+const products = ProductStore()
+onMounted(() => {
+    products.getCategories()
+    // products.category()
+})
 console.log(product);
 const test = ref(4)
 </script>

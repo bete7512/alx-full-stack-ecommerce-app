@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
 import { provideApolloClient } from '@vue/apollo-composable';
 import apolloclient from '../apollo.config'
-import { buyer_login, buyer_signup, } from '../Constants/Query'
+import { buyer_login, buyer_signup,CATEGORY_FECTH } from '../Constants/Query'
 import router from '../router/index'
 provideApolloClient(apolloclient);
-export const UserStore = defineStore("user", {
+export const ProductStore = defineStore("products", {
     state: () => ({
-        user: "am here for a reason not for a season",
+        categories:[],
     }),
     actions: {
         async signup(fname, lname, email, password, address, username) {
@@ -48,6 +48,19 @@ export const UserStore = defineStore("user", {
                 console.log(err);
                 return err.message
             }
+        },
+        async getCategories(){
+            try {
+                const response = await apolloclient.query({
+                    query: CATEGORY_FECTH
+                })
+                this.categories = response.data.category
+                console.log(this.categories);
+            } catch (err) {
+                console.log(err);
+                return err.message
+            }
+
         }
 
     },

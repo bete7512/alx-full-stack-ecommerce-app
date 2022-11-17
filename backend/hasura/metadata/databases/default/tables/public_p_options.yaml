@@ -35,6 +35,16 @@ select_permissions:
         - price
         - image_url
       filter: {}
+  - role: buyer
+    permission:
+      columns:
+        - id
+        - p_id
+        - price
+        - difference
+        - image_url
+        - name
+      filter: {}
   - role: seller
     permission:
       columns:

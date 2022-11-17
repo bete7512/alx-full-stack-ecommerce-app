@@ -24,6 +24,18 @@ insert_permissions:
         - id
         - name
 select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}
+  - role: buyer
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}
   - role: seller
     permission:
       columns:
