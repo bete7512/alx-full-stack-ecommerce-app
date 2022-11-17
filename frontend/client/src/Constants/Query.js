@@ -24,6 +24,9 @@ query MyQuery {
       name
       id
     }
+    category {
+      name
+    }
   }
 }
 `
