@@ -55,7 +55,7 @@
                 <div v-else-if="loading">loading</div>
                 <!-- <div v-else>{{product}}</div> -->
                 <div v-else class="flex flex-wrap justify-center space-x-4">
-                    <div class="  pt-5 px-4" v-for="p in product.filter((elem)=>subcategory ? elem.sub_category_ob.name === subcategory:category ? elem.category.name==category:elem)" :key="p.id">
+                    <div class="  pt-5 px-4" v-for="p in product.filter((elem)=>subcategory ? elem.sub_category_ob.name === subcategory:category ? category.filter((el)=>el ===elem.category.name):elem)" :key="p.id">
                         <Card :product="p"></Card>
                     </div>
                 </div>
