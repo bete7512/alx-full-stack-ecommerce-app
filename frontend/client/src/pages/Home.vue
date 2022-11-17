@@ -26,7 +26,7 @@
                                 <span>{{cat.name}}</span>
                             </div>
                             <div class="pl-10 flex" v-for="sub,ind in cat.sub_category_ids" :key="sub.id">
-                                <input v-model="subcategory[index][ind]" type="checkbox">
+                                <input v-model="subcategory[ind]" type="checkbox">
                                 <span>{{sub.name}}</span>
                             </div>
                         </div>
@@ -76,7 +76,7 @@ const { error, loading, result } = useQuery(
     }
 )
 const category = ref([])
-const subcategory = ref([])
+const subcategory = ref('')
 const product = computed(() => result.value?.product ?? []);
 const products = ProductStore()
 onMounted(() => {
