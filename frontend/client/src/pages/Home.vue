@@ -21,11 +21,11 @@
                         </div>
                         <div v-for="cat in products.categories" :key="cat.id">
                             <div class="flex space-x-2 text-lg font-bold">
-                                <input v-model="products.category" type="checkbox">
+                                <input v-model="category" type="checkbox">
                                 <span>{{cat.name}}</span>
                             </div>
                             <div class="pl-10 flex" v-for="sub in cat.sub_category_ids" :key="sub.id">
-                                <input v-model="products.subcategory" type="checkbox">
+                                <input v-model="subcategory" type="checkbox">
                                 <span>{{sub.name}}</span>
                             </div>
                         </div>
@@ -49,12 +49,12 @@
         </div>
         <div class=" pt-4 space-x-3 sm:w-3/4  w-full">
             <div class="">
-                <h1 class="flex justify-center text-xl font-bold">Popular Products{{products.subcategory}}</h1>
+                <h1 class="flex justify-center text-xl font-bold">Popular Products{{subcategory}}</h1>
                 <div v-if="error">error</div>
                 <div v-else-if="loading">loading</div>
                 <!-- <div v-else>{{product}}</div> -->
                 <div v-else class="flex flex-wrap justify-center space-x-4">
-                    <div class="  pt-5 px-4" v-for="p in product.filter((elem)=>products.subcategory ? elem.sub_category_ob.name === products.subcategory:products.category ? elem.category.name==products.category:elem)" :key="p.id">
+                    <div class="  pt-5 px-4" v-for="p in product.filter((elem)=>subcategory ? elem.sub_category_ob.name === subcategory:category ? elem.category.name==category:elem)" :key="p.id">
                         <Card :product="p"></Card>
                     </div>
                 </div>
@@ -74,6 +74,8 @@ const { error, loading, result } = useQuery(
         fetchPolicy: 'network-only',
     }
 )
+const category = ref('')
+const subcategory = ref('')
 const product = computed(() => result.value?.product ?? []);
 const products = ProductStore()
 onMounted(() => {
