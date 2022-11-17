@@ -19,14 +19,14 @@
                             <button type="submit"
                                 class="text-white absolute right-0 bottom-0 top-0 bg-orange-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                         </div>
-                        <div v-for="index,cat in products.categories" :key="cat.id">
-                            {{cat}}
+                        <div v-for="cat,index in products.categories" :key="cat.id">
+                           
                             <div class="flex space-x-2 text-lg font-bold">
                                 <input v-model="category[index]" type="checkbox">
                                 <span>{{cat.name}}</span>
                             </div>
-                            <div class="pl-10 flex" v-for="index,sub in cat.sub_category_ids" :key="sub.id">
-                                <input v-model="subcategory[index]" type="checkbox">
+                            <div class="pl-10 flex" v-for="sub,ind in cat.sub_category_ids" :key="sub.id">
+                                <input v-model="subcategory[index][ind]" type="checkbox">
                                 <span>{{sub.name}}</span>
                             </div>
                         </div>
