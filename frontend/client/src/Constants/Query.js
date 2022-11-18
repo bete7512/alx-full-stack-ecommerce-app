@@ -92,4 +92,12 @@ query MyQuery($id: Int!) {
 
 `
 
-export {GET_PRODUCTS, buyer_signup, buyer_login,CATEGORY_FECTH,GET_PRODUCT_DETAIL}
+const ADD_ORDER = gql`
+mutation MyMutation($id: Int!) {
+  insert_orders(order_inputs: {id: $id}) {
+    payment_url
+  }
+}
+
+`
+export {GET_PRODUCTS, buyer_signup, buyer_login,CATEGORY_FECTH,GET_PRODUCT_DETAIL,ADD_ORDER}

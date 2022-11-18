@@ -29,7 +29,7 @@
                 
                     <div class="flex flex-wrap space-x-2 justify-center items-center">
                         <button class="p-3 rounded-lg bg-orange-700">Add to Cart</button>
-                        <button class="p-3 rounded-lg bg-orange-700">Order</button>
+                        <button class="p-3 rounded-lg bg-orange-700 hover:bg-emerald-400" @click="product.add_order(option.id)">Order</button>
                         <button class="p-3 rounded-lg bg-orange-500">add To Wishlist</button>
                     </div>
                 </div>
@@ -42,8 +42,11 @@
 import { useRoute } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { useQuery } from '@vue/apollo-composable'
-import { GET_PRODUCT_DETAIL } from '../Constants/Query'
+import { GET_PRODUCT_DETAIL,ADD_ORDER } from '../Constants/Query'
+import { ProductStore } from '../stores/productStore';
 const route = useRoute();
+const product = ProductStore()
+
 console.log(route.params.id)
 const { error, loading, result } = useQuery(
     GET_PRODUCT_DETAIL,
