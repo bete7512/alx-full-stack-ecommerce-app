@@ -6,7 +6,7 @@ const finduser = async (variables,querys) => {
         {
             method: 'POST',
             headers:{
-                'x-hasura-admin-secret': 'myadminsecretkey'
+                'x-hasura-admin-secret': process.env.HASURA_ADMIN_SECET
               },
             body: JSON.stringify({
                 query: querys,

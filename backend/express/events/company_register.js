@@ -12,7 +12,7 @@ const execute = async (variables) => {
         {
             method: 'POST',
             headers: {
-                'x-hasura-admin-secret': 'myadminsecretkey'
+                'x-hasura-admin-secret': process.env.HASURA_ADMIN_SECET
             },
             body: JSON.stringify({
                 query: QUERY_SELLER_HAVE_COMPANY,

@@ -14,7 +14,7 @@ const execute = async (variables) => {
 		{
 			method: 'POST',
 			headers: {
-				'x-hasura-admin-secret': 'KwDGpDWBN8ZVHTUH7ovT2y7UOHBK4J62R9F6a4ETnGnK7Pn7LJSaqQcATyDYtYgE'
+				'x-hasura-admin-secret': process.env.HASURA_ADMIN_SECET
 			},
 			body: JSON.stringify({
 				query: HASURA_SIGNUP_OPERATION,
