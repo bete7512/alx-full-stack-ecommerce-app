@@ -7,6 +7,12 @@ type Mutation {
 }
 
 type Mutation {
+  insert_orders(
+    order_inputs: order_inputs!
+  ): order_output
+}
+
+type Mutation {
   loginbuyer(
     inputs: inputs!
   ): outputs
@@ -73,6 +79,10 @@ input input_reg {
   address: String!
 }
 
+input order_inputs {
+  id: Int!
+}
+
 type SampleOutput {
   success: String!
 }
@@ -87,5 +97,9 @@ type output_reg {
 
 type fileoutput {
   file_path: String!
+}
+
+type order_output {
+  payment_url: String!
 }
 

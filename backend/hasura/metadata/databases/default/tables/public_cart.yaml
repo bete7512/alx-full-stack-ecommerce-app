@@ -1,3 +1,48 @@
 table:
   name: cart
   schema: public
+insert_permissions:
+  - role: buyer
+    permission:
+      check: {}
+      set:
+        buyer_id: x-hasura-User-Id
+      columns:
+        - buyer_id
+        - id
+        - p_id
+        - created_at
+select_permissions:
+  - role: buyer
+    permission:
+      columns:
+        - buyer_id
+        - id
+        - p_id
+        - created_at
+      filter:
+        buyer_id:
+          _eq: X-Hasura-User-Id
+update_permissions:
+  - role: buyer
+    permission:
+      columns:
+        - buyer_id
+        - id
+        - p_id
+        - created_at
+      filter:
+        buyer_id:
+          _eq: X-Hasura-User-Id
+      check:
+        buyer_id:
+          _eq: X-Hasura-User-Id
+      set:
+        buyer_id: x-hasura-User-Id
+delete_permissions:
+  - role: buyer
+    permission:
+      backend_only: false
+      filter:
+        buyer_id:
+          _eq: X-Hasura-User-Id

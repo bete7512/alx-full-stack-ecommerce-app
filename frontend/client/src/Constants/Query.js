@@ -100,4 +100,13 @@ mutation MyMutation($id: Int!) {
 }
 
 `
-export {GET_PRODUCTS, buyer_signup, buyer_login,CATEGORY_FECTH,GET_PRODUCT_DETAIL,ADD_ORDER}
+const INSERT_TO_CART = gql`
+mutation MyMutation($id: Int!) {
+  insert_cart(objects: {id: $p_id}) {
+    returning {
+      p_id
+    }
+  }
+}
+`
+export { GET_PRODUCTS, buyer_signup, buyer_login, CATEGORY_FECTH, GET_PRODUCT_DETAIL, ADD_ORDER, INSERT_TO_CART }

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { provideApolloClient } from '@vue/apollo-composable';
 import apolloclient from '../apollo.config'
-import { buyer_login, buyer_signup,CATEGORY_FECTH,ADD_ORDER } from '../Constants/Query'
+import { buyer_login, buyer_signup,CATEGORY_FECTH,ADD_ORDER,INSERT_TO_CART } from '../Constants/Query'
 import router from '../router/index'
 provideApolloClient(apolloclient);
 export const ProductStore = defineStore("products", {
@@ -80,8 +80,20 @@ export const ProductStore = defineStore("products", {
             }
 
         },
-        async addto_cart(){
-            
+        async add_to_cart(id){
+            try {
+                const response = await apolloclient.mutate({
+                    mutation:INSERT_TO_CART,
+                    variables:{
+                        id:id
+                    }
+                })
+                console.log(response);
+                
+            } catch (error) {
+                console.log(error);
+            }
+
         }
 
     },

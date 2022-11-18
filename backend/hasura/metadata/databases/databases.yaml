@@ -2,7 +2,8 @@
   kind: postgres
   configuration:
     connection_info:
-      database_url: postgres://postgres:postgrespassword@postgres:5432/postgres
+      database_url: postgres://postgres:gib8Apv9wKPe@ep-cool-hill-178722.eu-central-1.aws.neon.tech/main
+      # postgres://postgres:postgrespassword@postgres:5432/postgres
       isolation_level: read-committed
       use_prepared_statements: false
   tables: "!include default/tables/tables.yaml"

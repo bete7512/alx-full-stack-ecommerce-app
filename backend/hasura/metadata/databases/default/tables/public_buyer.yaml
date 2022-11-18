@@ -9,3 +9,20 @@ array_relationships:
         table:
           name: order
           schema: public
+select_permissions:
+  - role: buyer
+    permission:
+      columns:
+        - status
+        - id
+        - address
+        - email
+        - first_name
+        - last_name
+        - password
+        - v_code_for_forg
+        - v_code_for_reg
+        - expire_time
+      filter:
+        id:
+          _eq: X-Hasura-User-Id

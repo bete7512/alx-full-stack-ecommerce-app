@@ -21,13 +21,6 @@ object_relationships:
           name: sub_category
           schema: public
 array_relationships:
-  - name: orders
-    using:
-      foreign_key_constraint_on:
-        column: p_id
-        table:
-          name: order
-          schema: public
   - name: p_options
     using:
       foreign_key_constraint_on:

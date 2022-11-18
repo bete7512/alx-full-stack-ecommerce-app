@@ -9,11 +9,20 @@ actions:
       - role: seller
       - role: buyer
       - role: superadmin
+  - name: insert_orders
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:3000/insertorder
+    permissions:
+      - role: seller
+      - role: buyer
   - name: loginbuyer
     definition:
       kind: synchronous
       handler: http://host.docker.internal:3000/buyerl
     permissions:
+      - role: deliveragent
+      - role: superadmin
       - role: seller
       - role: anonymous
       - role: buyer
@@ -26,6 +35,9 @@ actions:
       kind: synchronous
       handler: http://host.docker.internal:3000/sellerl
     permissions:
+      - role: deliveragent
+      - role: superadmin
+      - role: buyer
       - role: seller
       - role: anonymous
   - name: loginsuper
@@ -70,9 +82,11 @@ custom_types:
     - name: SampleInput
     - name: inputs
     - name: input_reg
+    - name: order_inputs
   objects:
     - name: SampleOutput
     - name: outputs
     - name: output_reg
     - name: fileoutput
+    - name: order_output
   scalars: []
