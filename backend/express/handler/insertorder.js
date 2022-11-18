@@ -46,7 +46,7 @@ const handler = async (req, res) => {
         first_name: first_name,
         last_name: last_name,
         // tx_ref: 'tx-x12345',
-        callback_url: 'http://localhost:5173/', // your callback URL
+        callback_url: 'https://webhook.site/', // your callback URL
         customization: {
             title: 'I love e-commerce',
             description: 'It is time to pay'
