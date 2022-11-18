@@ -20,6 +20,7 @@ app.get('/event/payment',(req,res)=>{
 })
 app.post('/:route', (req, res) => {
   try {
+    
     console.log("from here");
   const handler = require(`./handler/${req.params.route}`);
   if (!handler) {
