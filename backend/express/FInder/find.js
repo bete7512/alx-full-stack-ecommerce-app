@@ -2,11 +2,11 @@
 require('dotenv').config()
 const finduser = async (variables,querys) => {
     const fetchResponse = await fetch(
-        "http://localhost:8080/v1/graphql",
+        "https://fullstack-ecommerce.hasura.app/v1/graphql",
         {
             method: 'POST',
             headers:{
-                'x-hasura-admin-secret': 'myadminsecretkey'
+                'x-hasura-admin-secret': process.env.HASURA_ADMIN_SECET
               },
             body: JSON.stringify({
                 query: querys,
