@@ -10,7 +10,7 @@ mutation MyMutation($username: String!, $password: String!, $email: String!, $ln
 `;
 const execute = async (variables) => {
 	const fetchResponse = await fetch(
-		"https://sunny-glowworm-92.hasura.app/v1/graphql",
+		"https://fullstack-ecommerce.hasura.app/v1/graphql",
 		{
 			method: 'POST',
 			headers: {

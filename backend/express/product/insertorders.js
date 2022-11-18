@@ -8,7 +8,7 @@ mutation MyMutation($buyer_id: Int!, $o_id: Int!, $reference_id: String!) {
 `
 const insert_order = async (variables,query)=>{
 	const fetchResponse = await fetch(
-		"http://localhost:8080/v1/graphql",
+		"https://fullstack-ecommerce.hasura.app/v1/graphql",
 		{
 			method: 'POST',
 			headers: {

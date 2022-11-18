@@ -2,7 +2,7 @@
 require('dotenv').config()
 const finduser = async (variables,querys) => {
     const fetchResponse = await fetch(
-        "http://localhost:8080/v1/graphql",
+        "https://fullstack-ecommerce.hasura.app/v1/graphql",
         {
             method: 'POST',
             headers:{
