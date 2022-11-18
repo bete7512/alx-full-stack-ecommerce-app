@@ -8,6 +8,11 @@ app.use(express.json({ limit: '200mb' }));
 //     message:"hello sol"
 //   })
 // })
+app.get('/', (req, res) => {
+  res.send({
+    message: "hello world"
+  })
+})
 app.get('/event/payment',(req,res)=>{
   res.send({
     message:"hello event"
