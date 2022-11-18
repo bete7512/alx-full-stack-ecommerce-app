@@ -34,6 +34,7 @@ const execute = async (variables) => {
 	return data;
 };
 const handler = async (req, res) => {
+	console.log(req.body);
 	const { fname, lname, email, password, address } = req.body.input.input_reg;
 	const finduser = require('../FInder/find')
 	const { data, error } = await finduser({email:email}, find_query)
