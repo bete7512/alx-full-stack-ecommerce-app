@@ -19,44 +19,34 @@
                             <button type="submit"
                                 class="text-white absolute right-0 bottom-0 top-0 bg-orange-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                         </div>
-                        <div v-for="cat,index in products.categories" :key="cat.id">
-                           
+                        <div v-for="cat, index in products.categories" :key="cat.id">
                             <div class="flex space-x-2 text-lg font-bold">
-                                <input v-model="category[index]" type="checkbox">
-                                <span>{{cat.name}}</span>
+                                <input id="cname" v-model="category" :value="cat.name" type="checkbox">
+                                <label for="cname">{{ cat.name }}</label>
                             </div>
-                            <div class="pl-10 flex" v-for="sub,ind in cat.sub_category_ids" :key="sub.id">
-                                <input v-model="subcategory[ind]" type="checkbox">
-                                <span>{{sub.name}}</span>
+                            <div class="pl-10 flex" v-for="sub, ind in cat.sub_category_ids" :key="sub.id">
+                                <input v-model="subcategory" :value="sub.name" type="checkbox">
+                                <span>{{ sub.name }}</span>
                             </div>
                         </div>
-                        <!-- <div>
-                            <div class="flex space-x-2 text-lg font-bold">
-                                <input type="checkbox">
-                                <span>Clothes</span>
-                            </div>
-                            <div class="pl-10 flex">
-                                <input type="checkbox">
-                                <span>shoes </span>
-                            </div>
-                            <div class="pl-10 flex">
-                                <input type="checkbox">
-                                <span>fashion </span>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
         <div class=" pt-4 space-x-3 sm:w-3/4  w-full">
             <div class="">
-                <h1 class="flex justify-center text-xl font-bold">Popular Products{{subcategory}}</h1>
+                <h1 class="flex justify-center text-xl font-bold">Popular Products{{ category }}</h1>
                 <div v-if="error">error</div>
                 <div v-else-if="loading">loading</div>
                 <!-- <div v-else>{{product}}</div> -->
                 <div v-else class="flex flex-wrap justify-center space-x-4">
-                    <div class="  pt-5 px-4" v-for="p in product.filter((elem)=>subcategory ? elem.sub_category_ob.name === subcategory:category ? category.filter((el)=>el ===elem.category.name):elem)" :key="p.id">
+                    <div class="pt-5 px-4"
+                        v-for="p in product.filter((elem) => (category.length > 0 ) ?  elem.category.name == category[0] : (subcategory.length > 0) ? elem.sub_category_ob.name === subcategory[0] : elem)"
+                        :key="p.id">{{p.category.name}}
                         <Card :product="p"></Card>
+                        <!-- // subcategory
+                        // ?
+                        // elem.sub_category_ob.name === subcategory[0] : elem -->
                     </div>
                 </div>
             </div>
@@ -65,7 +55,7 @@
 </template>
 <script setup>
 import { useQuery } from '@vue/apollo-composable'
-import { ref, computed,onMounted } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { GET_PRODUCTS } from '../Constants/Query';
 import Card from '../components/Products/Card.vue'
 import { ProductStore } from '../stores/productStore';
@@ -76,14 +66,18 @@ const { error, loading, result } = useQuery(
     }
 )
 const category = ref([])
-const subcategory = ref('')
+const subcategory = ref([])
 const product = computed(() => result.value?.product ?? []);
 const products = ProductStore()
 onMounted(() => {
     products.getCategories()
     // products.category()
 })
-console.log(product);
+watch(category, (one, two) => {
+    console.log(one, two);
+    // console.log("am from here"+product.filter((elem) => (subcategory.length > 0) ? subcategory.filter((e)=>e === elem.sub_category_ob.name)  : category.length > 0 ? category.filter((el) => el == elem.category.name) : elem))
+})
+// console.log(product);
 const test = ref(4)
 </script>
 <style>

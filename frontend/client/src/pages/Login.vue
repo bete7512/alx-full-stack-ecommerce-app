@@ -67,7 +67,6 @@ const schema = Yup.object().shape({
         .min(3, 'Password must be at least 3 characters')
         .required('Password is required'),
 })
-
 // onMounted(() => {
 //     window.localStorage.removeItem('Apollotoken')
 // })

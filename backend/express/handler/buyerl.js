@@ -2,12 +2,14 @@ const bcrypt = require('bcrypt')
 require('dotenv').config()
 const find_query = `
 query MyQuery($email: String = "") {
-	buyer(where: {email: {_eq: $email}}, limit: 1) {
-	  email
+  buyer(where: {email: {_eq: $email}}, limit: 1) {
+    email
     id
     password
-	}
+    first_name
+    last_name
   }
+}
 `
 const jwt = require('jsonwebtoken')
 const handler = async (req, res) => {
