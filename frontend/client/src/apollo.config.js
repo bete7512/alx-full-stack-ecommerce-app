@@ -19,3 +19,8 @@ const apolloclient = new ApolloClient({
     cache:new InMemoryCache()
 })
 export default apolloclient
+
+
+
+
+

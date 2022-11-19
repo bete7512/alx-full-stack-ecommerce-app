@@ -2,8 +2,7 @@
     <div class="overflow-x-scroll">
         <div class="flex justify-between">
             <div></div>
-            <button @click="modal = true" class="text-green-900 p-4 mb-2 rounded-lg bg-orange-400">add new
-                product</button>
+            <button  @click="modal = true" class="text-green-900 p-4 mb-2 rounded-lg bg-orange-400">add new product</button>
         </div>
         <table class="w-full pt-2 text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

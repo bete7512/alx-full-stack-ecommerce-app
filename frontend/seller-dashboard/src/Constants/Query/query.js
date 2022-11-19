@@ -113,4 +113,27 @@ mutation MyMutation($base64str: String = "", $name: String = "", $type: String =
   }
 }
 `
-export { insert_company, seller_login, seller_signup, seller_company,subcategory_query, insert_product, product_query, category_query, file_upload }
+
+const query_orders = gql`
+query MyQuery {
+  order {
+    id
+    buyer_id
+    buyer {
+      first_name
+      email
+      id
+    }
+    created_at
+    options {
+      id
+      name
+      product {
+        id
+        name
+      }
+    }
+  }
+}
+`
+export { insert_company, seller_login, seller_signup, seller_company,subcategory_query, insert_product, product_query, category_query, file_upload,query_orders }

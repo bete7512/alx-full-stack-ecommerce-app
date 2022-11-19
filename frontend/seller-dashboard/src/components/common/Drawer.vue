@@ -12,7 +12,7 @@
           <path d="M12 2.25195C14.8113 2.97552 17.0245 5.18877 17.748 8.00004H12V2.25195Z" fill="currentColor" />
         </svg>
 
-        <span class="mx-4">Dashboard</span>
+        <span class="mx-4">Over Views </span>
       </router-link>
       <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
         :class="[$route.name === 'products' ? activeClass : inactiveClass]" to='/products'>
@@ -56,7 +56,7 @@
   
             <span class="mx-4">Add new Products</span>
           </router-link> -->
-
+<!-- 
       <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
         :class="[$route.name === 'transactions' ? activeClass : inactiveClass]" to="/transactions">
         <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
         </svg>
 
         <span class="mx-4">Transaction</span>
-      </router-link>
+      </router-link> -->
 
       <!-- <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
@@ -126,7 +126,7 @@
         <span class="mx-4">Messages</span>
       </router-link>
 
-      <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
+      <!-- <router-link class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
         :class="[$route.name === 'home' ? activeClass : inactiveClass]" to="/">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
           <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
@@ -135,7 +135,7 @@
         </svg>
 
         <span class="mx-4" >Setting</span>
-      </router-link>
+      </router-link> -->
 
 
     </nav>

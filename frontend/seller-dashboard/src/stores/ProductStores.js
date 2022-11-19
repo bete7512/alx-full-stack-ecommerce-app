@@ -23,7 +23,9 @@ export const ProductStore = defineStore("product", {
         type: '',
         f_name: '',
         ObjectFile: [],
-        file: ''
+        file: '',
+        adding_product: false,
+        adding_option: false,
     }),
     actions: {
 
@@ -37,6 +39,7 @@ export const ProductStore = defineStore("product", {
         },
        async insert_product() {
             try {
+                // this.adding_option = true;
                 await this.add_options()
                 const response = apolloclient.mutate({
                     mutation: insert_product,
@@ -52,6 +55,7 @@ export const ProductStore = defineStore("product", {
             }
             catch (err) {
                 console.log(err);
+                // this.adding_option = false;
                 return err.message
             }
         },
@@ -103,6 +107,9 @@ export const ProductStore = defineStore("product", {
             // }
         },
         async add_options() {
+            // if(!this.adding_product){
+            //     this.add_options = true;
+            // }
            await this.add_image()
             console.log("this is url testing"+this.image_url);
             this.options.push({ image_url: this.image_url.join(), name: this.o_name, price: this.price, difference: this.difference })
@@ -112,6 +119,9 @@ export const ProductStore = defineStore("product", {
             console.log("this options testing if it is working"+this.options);
             this.ObjectFile = []
             this.image_url = []
+            // if(!this.adding_product){
+            //     this.add_options = false;
+            // }
         }
     },
     getters: {

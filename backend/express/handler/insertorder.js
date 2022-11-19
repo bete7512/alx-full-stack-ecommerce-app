@@ -1,4 +1,4 @@
-const  findproduct  = require("../FInder/findproduct");
+const findproduct = require("../FInder/findproduct");
 const finduser = require("../FInder/find");
 const insert_order = require("../product/insertorders");
 const Chapa = require('../payment/chapa')
@@ -17,10 +17,10 @@ const handler = async (req, res) => {
     const u_id = parseInt(req.body.session_variables['x-hasura-user-id']);
     const { id } = req.body.input.order_inputs;
     const variables = { id };
-    const  data  = await findproduct(variables);
-    const {price} = data['data']['p_options_by_pk'];
+    const data = await findproduct(variables);
+    const { price } = data['data']['p_options_by_pk'];
     const user = await finduser({ id: u_id }, USER_QUERY);
-    const {email,first_name,last_name }= user['data']['buyer_by_pk']
+    const { email, first_name, last_name } = user['data']['buyer_by_pk']
     // const first_name = user['data']['buyer_by_pk']['first_name']
     // const last_name = user['data']['buyer_by_pk']['last_name']
 
@@ -47,7 +47,7 @@ const handler = async (req, res) => {
         last_name: last_name,
         // tx_ref: 'tx-x12345',
         callback_url: 'https://webhook.site/',
-        return_url:'http://localhost:5173/', // your callback URL
+        return_url: 'http://localhost:5173/', // your callback URL
         customization: {
             title: 'I love e-commerce',
             description: 'It is time to pay'
@@ -55,7 +55,13 @@ const handler = async (req, res) => {
     }
     const chapa_response = await chapa(customerInfo)
     console.log(chapa_response);
-    const order =await  insert_order({buyer_id:u_id,o_id:id,reference_id:chapa_response.tx_ref})
+    try {
+        const order = await insert_order({ buyer_id: u_id, o_id: id, reference_id: chapa_response.tx_ref })
+
+    } catch (error) {
+        return res.status(400).json({ error: error.message })
+
+    } 
     console.log(order);
     return res.json({
         payment_url: chapa_response.data.checkout_url

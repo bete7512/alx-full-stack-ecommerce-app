@@ -109,4 +109,5 @@ mutation MyMutation($id: Int!) {
   }
 }
 `
+
 export { GET_PRODUCTS, buyer_signup, buyer_login, CATEGORY_FECTH, GET_PRODUCT_DETAIL, ADD_ORDER, INSERT_TO_CART }

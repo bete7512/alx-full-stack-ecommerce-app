@@ -56,10 +56,10 @@
                                 <a href="#"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Announcement</a>
 
-                                <router-link to="/"
+                                <button @click="logout" 
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">
                                     Log out
-                                </router-link>
+                                </button>
                             </div>
                         </transition>
                     </div>
@@ -91,6 +91,7 @@ import Drawer from './Drawer.vue';
 import Mdrawer from './Mobile/Drawer.vue'
 import Header from './Header.vue';
 import { ref } from 'vue'
+import router from '../../router';
 const isNav = ref(false)
 const nav = () => {
     isNav.value = true
@@ -100,6 +101,11 @@ const dropdownOpen = ref(false);
 //   const { isOpen } = useSidebar();
 const isOpen = ref(false)
 //array of numbers
+const logout = ()=>{
+    console.log(localStorage.getItem('Apollotoken'));
+    localStorage.removeItem('Apollotoken')
+    router.push('/login')
+}
 </script>
 <style lang="">
     
