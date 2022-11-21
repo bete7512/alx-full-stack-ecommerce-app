@@ -13,14 +13,14 @@
                             <Field name="fname" type="text" v-model="fname" placeholder="enter Your first name"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.fname }" />
-                            <div class="text-red-700">{{errors.fname}}</div>
+                            <div class="text-red-700">{{ errors.fname }}</div>
                         </div>
                         <div class="space-y-3 sm:w-1/2 w-full">
                             <label class="font-bold text-2xl">Last name</label>
                             <Field name="lname" type="lname" v-model="lname" placeholder="enter last name"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.lname }" />
-                            <div class="text-red-700">{{errors.lname}}</div>
+                            <div class="text-red-700">{{ errors.lname }}</div>
                         </div>
                     </div>
                     <div class="sm:flex block space-x-4 w-full">
@@ -29,14 +29,14 @@
                             <Field name="email" type="text" v-model="email" placeholder="enter your email address"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.email }" />
-                            <div class="text-red-700">{{errors.email}}</div>
+                            <div class="text-red-700">{{ errors.email }}</div>
                         </div>
                         <div class="space-y-3 sm:w-1/2 w-full">
                             <label class="font-bold text-2xl">Username</label>
                             <Field name="username" type="text" v-model="username" placeholder="enter username"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.username }" />
-                            <div class="text-red-700">{{errors.username}}</div>
+                            <div class="text-red-700">{{ errors.username }}</div>
                         </div>
                     </div>
                     <div class="sm:flex block space-x-4 w-full">
@@ -45,29 +45,29 @@
                             <Field name="password" type="password" v-model="password" placeholder="enter passwpord"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.password }" />
-                            <div class="text-red-700">{{errors.password}}</div>
+                            <div class="text-red-700">{{ errors.password }}</div>
                         </div>
                         <div class="space-y-3 sm:w-1/2 w-full">
                             <label class="font-bold text-2xl">Confirm Password</label>
                             <Field name="cpassword" type="password" v-model="cpassword" placeholder="enter passwpord"
                                 class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                                 :class="{ 'is-invalid': errors.cpassword }" />
-                            <div class="text-red-700">{{errors.cpassword}}</div>
+                            <div class="text-red-700">{{ errors.cpassword }}</div>
                         </div>
                     </div>
                     <div class="space-y-3">
-                            <label class="font-bold text-2xl">Address</label>
-                            <Field name="address" type="text" v-model="address" placeholder="enter passwpord"
-                                class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
-                                :class="{ 'is-invalid': errors.address}" />
-                            <div class="text-red-700">{{errors.address}}</div>
-                        </div>
+                        <label class="font-bold text-2xl">Address</label>
+                        <Field name="address" type="text" v-model="address" placeholder="enter passwpord"
+                            class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+                            :class="{ 'is-invalid': errors.address }" />
+                        <div class="text-red-700">{{ errors.address }}</div>
+                    </div>
                 </div>
-                <div class="text-red-600">{{loginreturn}}</div>
+                <!-- <div class="text-red-600">{{loginreturn}}</div> -->
                 <div class="pt-2">
                     <button type="submit"
                         class="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        <div v-if="loginprocess" class="text-2xl">
+                        <div v-if="processing" class="text-2xl">
                             <svg role="status" class="inline mr-3 w-4 h-4 text-white animate-spin" viewBox="0 0 100 101"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -83,8 +83,13 @@
                             Submit
                         </div>
                     </button>
+                    <div>
+                        <router-link class="text-blue-400" to="/login">login</router-link>
+                    </div>
+                    <!-- <div>{{count.doubleCount}}</div> -->
+                    <!-- <button @click="count.increment()">double it</button> -->
                 </div>
-                
+
             </Form>
         </div>
     </div>
@@ -92,8 +97,11 @@
 <script setup >
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { defineEmits } from 'vue';
+import { userStore } from '../stores/userStore';
+// import { counter } from '../stores/counter';
+// const count = counter()
 const username = ref('')
 const password = ref('')
 const fname = ref('')
@@ -119,15 +127,40 @@ const schema = Yup.object().shape({
         .required('Confirm Password is required'),
     address: Yup.string()
         .required('address is required'),
-    acceptTerms: Yup.string()
-        .required('Accept Ts & Cs is required')
+    // acceptTerms: Yup.string()
+    //     .required('Accept Ts & Cs is required')
 });
+const user = userStore()
+console.log(user);
+const processing = ref(false)
+// onMounted(() => {
+//     console.log("jknkkkkkkkkkkkkkkkkkkkkk");
+//     let response =  user.signup({
+//             fname: 'fname.value',
+//             lname: 'lname.value',
+//             email: 'email.value',
+//             password:'password.value',
+//             address:'address.value'
+//         })
+// })
 const onSubmit = async () => {
+    console.log("jknkkkkkkkkkkkkkkkkkkkkk");
+    localStorage.removeItem('Apollotoken')
     try {
-      console.log("display something")
+        processing.value = true
+        let response = await user.signup(
+            fname.value,
+            lname.value,
+            email.value,
+            password.value,
+            address.value,
+            username.value
+        )
+        processing.value = false
+        console.log(response);
     }
     catch (error) {
-       
+        console.log(error);
     }
 }
 </script>

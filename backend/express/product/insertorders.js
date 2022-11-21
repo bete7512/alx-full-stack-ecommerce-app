@@ -1,10 +1,14 @@
 const add_order = `
 mutation MyMutation($buyer_id: Int!, $o_id: Int!, $reference_id: String!) {
-    insert_order(objects: {buyer_id: $buyer_id, o_id: $o_id, reference_id: $reference_id}) {
-      affected_rows
-    }
+	insert_product_orders(objects: {buyer_id: $buyer_id, p_id: $o_id, reference_id: $reference_id}) {
+	  affected_rows
+	  returning {
+		buyer {
+		  address
+		}
+	  }
+	}
   }
-  
 `
 const insert_order = async (variables,query)=>{
 	const fetchResponse = await fetch(
