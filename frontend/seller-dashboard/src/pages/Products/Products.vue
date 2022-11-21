@@ -64,7 +64,10 @@
 
         <!-- <div v-else>{{ product }}</div> -->
     </div>
-    <AddnewProductVue v-if="modal" v-on:close="modal = false"></AddnewProductVue>
+    <div class="overflow-hidden h-screen">
+
+        <AddnewProductVue class="" v-if="modal" v-on:close="modal = false"></AddnewProductVue>
+    </div>
     <ProductDetail :id="id_param" v-if="detail_product" v-on:close="detail_product = false"></ProductDetail>
     <Delete v-if="isDelete" v-on:canceldelete="isDelete = false" :id="id_param" v-on:deletenotify="isDelete = false"></Delete>
 </template>

@@ -78,7 +78,7 @@
                     </transition>
                 </div> -->
                 <div class="flex space-x-1 justify-center items-center">
-                    <button class="text-lg flex space-x-2">
+                    <router-link to="/carts"  class="text-lg flex space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                             class="bi bi-cart" viewBox="0 0 16 16">
                             <path
@@ -88,7 +88,7 @@
                             Cart
                         </div>
 
-                    </button>
+                    </router-link>
                 </div>
                 <!-- <div class="flex space-x-1 justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
@@ -136,11 +136,13 @@
 <script setup>
 import { ref } from 'vue'
 import { UserStore } from '../../stores/userStore';
+import router from '../../router';
 const user = UserStore();
 const dropdownOpen = ref(false)
 const logout = () => {
     localStorage.removeItem('Apollotoken')
     user.userLoggedin = false
+    router.push('/')
 }
 </script>
 <style>

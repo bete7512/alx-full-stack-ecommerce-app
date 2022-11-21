@@ -3,6 +3,7 @@ import Home from '../pages/Home.vue'
 import Login from '../pages/Login.vue'
 import Signup from '../pages/Signup.vue'
 import Main from '../pages/Main.vue'
+import Cart from '../pages/Cart.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -30,7 +31,8 @@ const router = createRouter({
           component:()=>import('../pages/ProductDetail.vue'),
           meta: { layout: "main" }
     
-        }
+        },
+
       ]
     },
     {
@@ -48,7 +50,20 @@ const router = createRouter({
       component: Signup,
       meta: { layout: "empty" },
     },
+    {
+      path:'/carts',
+      name:'cart',
+      component:Cart,
+      meta: { layout: "main" },
+          beforeEnter: (to, from, next) => {
+        if (localStorage.getItem('Apollotoken')) {
+          next()
+        } else {
+          next('/login')
+        }
+      }
 
+    }
 
     // {
     //   path: '/about',

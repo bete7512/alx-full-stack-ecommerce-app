@@ -23,8 +23,7 @@ export const UserStore = defineStore("user", {
                     }
 
                 })
-                console.log(response);
-
+                return response.data.signupbuyer.success
             } catch (err) {
                 console.log(err);
                 return err.message

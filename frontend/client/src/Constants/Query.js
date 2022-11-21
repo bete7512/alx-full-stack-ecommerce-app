@@ -102,12 +102,42 @@ mutation MyMutation($id: Int!) {
 `
 const INSERT_TO_CART = gql`
 mutation MyMutation($id: Int!) {
-  insert_cart(objects: {id: $p_id}) {
+  insert_cart(objects: {p_id: $id}) {
     returning {
       p_id
     }
   }
 }
 `
-
-export { GET_PRODUCTS, buyer_signup, buyer_login, CATEGORY_FECTH, GET_PRODUCT_DETAIL, ADD_ORDER, INSERT_TO_CART }
+const QUERY_CART = gql`
+query MyQuery {
+  cart {
+    buyer_id
+   p_id
+    p_option {
+      name
+      image_url
+      id
+      difference
+      product {
+      id
+      name
+        about_product
+        category {
+          name
+          id
+        }
+        category_id
+        name
+        seller {
+          address
+          email
+          first_name
+          last_name
+        }
+      }
+    }
+  }
+}
+`
+export { GET_PRODUCTS, buyer_signup, buyer_login, CATEGORY_FECTH, GET_PRODUCT_DETAIL, ADD_ORDER, INSERT_TO_CART,QUERY_CART }

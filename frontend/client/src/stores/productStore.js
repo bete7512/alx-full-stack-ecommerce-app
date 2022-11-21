@@ -9,48 +9,9 @@ export const ProductStore = defineStore("products", {
         categories:[],
         category:'',
         subcategory:'',
+
     }),
     actions: {
-        // async signup(fname, lname, email, password, address, username) {
-        //     try {
-        //         const response = await apolloclient.mutate({
-        //             mutation: buyer_signup,
-        //             variables: {
-        //                 fname: fname,
-        //                 lname: lname,
-        //                 username: username,
-        //                 email: email,
-        //                 password: password,
-        //                 address: address
-        //             }
-
-        //         })
-        //         console.log(response);
-
-        //     } catch (err) {
-        //         console.log(err);
-        //         return err.message
-        //     }
-        // },
-        // async login(email,password) {
-        //     try {
-        //         const response = await apolloclient.mutate({
-        //             mutation: buyer_login,
-        //             variables: {
-        //                 email: email,
-        //                 password: password
-        //             }
-        //         })
-        //         localStorage.setItem('Apollotoken', response.data.loginseller.accestoken)
-        //         if(window.localStorage.getItem('Apollotoken')){
-        //             router.push('/')
-        //         }
-        //         return response.data.loginseller.accestoken
-        //     } catch (err) {
-        //         console.log(err);
-        //         return err.message
-        //     }
-        // },
         async getCategories(){
             try {
                 const response = await apolloclient.query({
@@ -65,6 +26,11 @@ export const ProductStore = defineStore("products", {
 
         },
         async add_order(id){
+            if(!localStorage.getItem('Apollotoken')){
+                console.log('not logged in');
+                router.push('/login')
+                return
+            }
             try {
                 const response = await apolloclient.mutate({
                     mutation:ADD_ORDER,
@@ -72,15 +38,20 @@ export const ProductStore = defineStore("products", {
                         id:id
                     }
                 })
-                console.log(response.data.insert_orders.payment_url);
                 location.replace(response.data.insert_orders.payment_url)
+                return response.data.insert_orders.payment_url
+            } catch (err) {
+                console.log(err);
+                return err.message
                 
-            } catch (error) {
-                console.log(error);
             }
 
         },
         async add_to_cart(id){
+            if(!localStorage.getItem('Apollotoken')){
+                router.push('/login')
+                return
+            }
             try {
                 const response = await apolloclient.mutate({
                     mutation:INSERT_TO_CART,
@@ -89,9 +60,11 @@ export const ProductStore = defineStore("products", {
                     }
                 })
                 console.log(response);
+                return response
                 
             } catch (error) {
                 console.log(error);
+                return error.message
             }
 
         }

@@ -1,7 +1,7 @@
 <template>
-    <div
-        class="overlay px-10 sm:px-0 h-screen sm:py-0 py-2 z-50 top-0 left-0 bottom-0 right-0 flex items-center justify-center">
-        <div class="space-y-4  lg:h-3/4  h-screen sm:w-1/2 w-full  bg-white rounded-md">
+ <div
+        class="overlay px-10 sm:px-0 h-screen sm:py-0 py-2 overflow-scroll z-50 top-0 left-0 bottom-0 right-0 flex items-center justify-center">
+        <div class="space-y-4  my-4 h-auto sm:w-1/2 w-full  bg-white rounded-md">
             <div class="flex  justify-between items-center px-4 pt-3 ">
                 <div></div>
                 <button class="p-3 hover:bg-red-800 rounded-lg" @click="() => emits('close')"><svg
