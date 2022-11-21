@@ -57,12 +57,11 @@ const handler = async (req, res) => {
     console.log(chapa_response);
     try {
         const order = await insert_order({ buyer_id: u_id, o_id: id, reference_id: chapa_response.tx_ref })
-
+        console.log(order);
     } catch (error) {
         return res.status(400).json({ error: error.message })
 
-    } 
-    console.log(order);
+    }
     return res.json({
         payment_url: chapa_response.data.checkout_url
     })
