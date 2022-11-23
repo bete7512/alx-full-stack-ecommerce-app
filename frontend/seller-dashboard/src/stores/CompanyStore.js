@@ -60,7 +60,6 @@ export const CompanyStore = defineStore("company", {
                 console.log(err);
                 return err.message
             }
-           
 
         }
 
