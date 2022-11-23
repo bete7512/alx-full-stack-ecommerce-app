@@ -4,8 +4,8 @@
             <div class="text-4-xl font-bold">BS</div>
             <div class="text-4-xl font-bold">New Posts</div>
 
-            <div class="flex justify-between items-center space-x-3">
-                <router-link to="/login" class="flex justify-center items-center space-x-1">
+            <div class="flex justify-between items-center space-x-3 h-full">
+                <router-link to="/login" class="flex hover:bg-red-800 px-4 h-full justify-center items-center space-x-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                         class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -15,11 +15,14 @@
                     </svg>
                     <button class="text-lg">signin</button>
                 </router-link>
-                <router-link to="/" class="flex space-x-1 justify-center items-center">
+                <router-link to="/orders" class="flex space-x-1 hover:bg-red-800 px-4 h-full justify-center items-center">
                     <button class="text-lg">Active Order</button>
                 </router-link>
-                <router-link to="/" class="flex space-x-1 justify-center items-center">
+                <router-link to="/" class="flex space-x-1 hover:bg-red-800 px-4 h-full justify-center items-center">
                     <button class="text-lg">Waiting</button>
+                </router-link>
+                <router-link to="/message" class="flex space-x-1 hover:bg-red-800 px-4 h-full justify-center items-center">
+                    <button class="text-lg">messages</button>
                 </router-link>
             </div>
         </div>

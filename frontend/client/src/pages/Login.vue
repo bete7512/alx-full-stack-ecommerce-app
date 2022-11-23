@@ -22,7 +22,7 @@
                         <div class="text-red-700">{{ errors.password }}</div>
                     </div>
                 </div>
-                <!-- <div class="text-red-600">{{ loginreturn }}</div> -->
+                <div class="text-red-600">{{ returnmessage }}</div>
                 <div class="pt-2">
                     <button type="submit"
                         class="flex items-center justify-center w-full px-10 py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -70,6 +70,7 @@ const schema = Yup.object().shape({
 // onMounted(() => {
 //     window.localStorage.removeItem('Apollotoken')
 // })
+const returnmessage = ref('')
 const user = UserStore()
 const loginprocess =ref(false)
 const onSubmit = async () => {
@@ -78,13 +79,14 @@ const onSubmit = async () => {
     try {
         // loginprocess.value = true
 
-        const response = await user.login(email.value, password.value)
+        returnmessage.value = await user.login(email.value, password.value)
         loginprocess.value = false
-        console.log(response);
+        // console.log(response);
     }
     catch (error) {
         loginprocess.value = false
-        console.log(error);
+        returnmessage.value = error
+        // console.log(error);
     }
 }
 </script>

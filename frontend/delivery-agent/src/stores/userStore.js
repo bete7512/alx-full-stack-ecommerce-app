@@ -24,7 +24,7 @@ export const userStore = defineStore('user',{
                   }
 
               })
-              return response.data.signupbuyer.success
+              return response.data.signupdeliveragent.success
           } catch (err) {
               console.log(err);
               return err.message
@@ -39,11 +39,12 @@ export const userStore = defineStore('user',{
                       password: password
                   }
               })
-              localStorage.setItem('Apollotoken', response.data.loginbuyer.accestoken)
+              console.log(response.data.logindeliveragent.accestoken);
+              localStorage.setItem('Apollotoken', response.data.logindeliveragent.accestoken)
               if(window.localStorage.getItem('Apollotoken')){
                   router.push('/')
               }
-              return response.data.loginbuyer.accestoken
+              return response.data.logindeliveragent.accestoken
           } catch (err) {
               console.log(err);
               return err.message

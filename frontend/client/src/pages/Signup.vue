@@ -63,7 +63,7 @@
                         <div class="text-red-700">{{ errors.address }}</div>
                     </div>
                 </div>
-                <!-- <div class="text-red-600">{{loginreturn}}</div> -->
+                <div class="text-red-600">{{ returnmessage }}</div>
                 <div class="pt-2">
                     <button type="submit"
                         class="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -131,6 +131,7 @@ const schema = Yup.object().shape({
     //     .required('Accept Ts & Cs is required')
 });
 const user = UserStore()
+const returnmessage = ref('')
 console.log(user);
 const processing = ref(false)
 // onMounted(() => {
@@ -148,7 +149,7 @@ const onSubmit = async () => {
     localStorage.removeItem('Apollotoken')
     try {
         processing.value = true
-        let response = await user.signup(
+        returnmessage.value = await user.signup(
             fname.value,
             lname.value,
             email.value,
@@ -157,10 +158,10 @@ const onSubmit = async () => {
             username.value
         )
         processing.value = false
-        console.log(response);
     }
     catch (error) {
         console.log(error);
+        returnmessage.value = error
     }
 }
 </script>
