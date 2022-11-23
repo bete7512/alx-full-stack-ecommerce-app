@@ -57,7 +57,7 @@
                     </div>
                     <div class="space-y-3">
                         <label class="font-bold text-2xl">Address</label>
-                        <Field name="address" type="text" v-model="address" placeholder="enter passwpord"
+                        <Field name="address" type="text" v-model="address" placeholder="enter your address"
                             class="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
                             :class="{ 'is-invalid': errors.address }" />
                         <div class="text-red-700">{{ errors.address }}</div>
