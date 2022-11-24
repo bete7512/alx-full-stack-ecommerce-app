@@ -1,13 +1,23 @@
-const LOCAL_FORECAST = {
-    yesterday: { low: 61, high: 75 },
-    today: { low: 64, high: 77 },
-    tomorrow: { low: 68, high: 80 }
-};
-
 // Only change code below this line
-
-// const lowToday = LOCAL_FORECAST.today.low;
-// const highToday = LOCAL_FORECAST.today.high;
-({ today: { low: lowToday, high: highToday } }) =  LOCAL_FORECAST
-// Only change code above this line
-''
+class Thermostat{
+    constructor(temp){
+      this.temperature = temp;
+    }
+    get getter(){
+      return 5/9 * (this.temperature - 32);
+    };
+    set setter(temp){
+      this.temperature = temp * 9.0 / 5 + 32
+    }
+  }
+  // Only change code above this line
+  
+  const thermos = new Thermostat(76); // Setting in Fahrenheit scale
+  let temp = thermos.temperature; // 24.44 in Celsius
+  thermos.temperature = 26;
+  console.log(thermos.temperature);
+  thermos.setter = 26;
+  console.log(thermos.temperature);
+let temp2 = thermos.getter; // 26 in Celsius
+console.log(temp2);
+  temp = thermos.temperature; // 26 in Celsius

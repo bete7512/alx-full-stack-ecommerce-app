@@ -4,7 +4,7 @@ import { SIGNUP_QUERY,LOGIN_QUERY } from '../constants/query'
 import {provideApolloClient} from '@vue/apollo-composable'
 import router from '../router/index'
 import apolloclient from '../apollo.config'
-provideApolloClient(apolloclient);
+// provideApolloClient(apolloclient);
 export const userStore = defineStore('user',{
       state: () => ({
           userLoggedin:localStorage.getItem('Apollotoken') ? true : false,

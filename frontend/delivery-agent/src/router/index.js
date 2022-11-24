@@ -11,8 +11,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'order',
+      component: orders,
       meta:{layout:'main'}
     },
     {

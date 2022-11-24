@@ -72,6 +72,8 @@ query MyQuery($id: Int!) {
       image_url
       name
       price
+      is_user_added_to_cart
+      is_user_added_to_order
     }
     seller {
       address
