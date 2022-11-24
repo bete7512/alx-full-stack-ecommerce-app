@@ -5,7 +5,7 @@
                 <span class="text-2xl font-semibold text-gray-700">Login</span>
             </div>
             <Form class=" justify-center space-y-6 bg-white   items-center  p-b-10 px-10"
-                @submit.preventDefault="onSubmit" :validation-schema="schema" v-slot="{ errors }">
+            @submit.preventDefault="onSubmit" :validation-schema="schema" v-slot="{ errors }">
                 <div class="space-y-10">
                     <div class="space-y-3">
                         <label>Email</label>
@@ -43,7 +43,11 @@
                         </div>
                     </button>
                     <div class="text-blue-900">
+                        <span class="txt1">
+							Don’t have an account?
+						</span>
                         <router-link to="/signup">Signup</router-link>
+                        <br>
                         <router-link to="/login">Forgot password</router-link>
                     </div>
                 </div>
