@@ -44,11 +44,13 @@ const handler = async (req, res) => {
 	console.log(data);
 	const user = data["supper_admin"]
 	if (user.length) {
+		console.log("for test purpose")
 		return res.status(400).json({
 			message: 'you are  registered no registratrion again'
 		})
 	}
 	else {
+		console.log("for test purpose")
 		const saltRounds = 10;
 		const salt = bcrypt.genSaltSync(saltRounds);
 		const hashed = bcrypt.hashSync(password, salt);
@@ -60,6 +62,7 @@ const handler = async (req, res) => {
 		}
 		const { data, errors } = await execute(variables);
 		if (data) {
+			console.log("for test purpose"+data)
 			res.send({
 				success: "You are succefully registered"
 			})
