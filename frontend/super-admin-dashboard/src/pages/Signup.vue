@@ -147,7 +147,6 @@ const onSubmit = async () => {
             email: email.value,
             password: password.value,
             cpassword: cpassword.value,
-            address: address.value,
         })
         console.log(loginreturn.value.status)
         if (loginreturn.value.status == 200) {

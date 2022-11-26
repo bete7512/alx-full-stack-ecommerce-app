@@ -9,7 +9,7 @@ export const UserStore = defineStore("user", {
         user: "am here for a reason not for a season",
     }),
     actions: {
-        async signup(fname, lname, email, password, address, username) {
+        async signup(fname, lname, email, password,username) {
             try {
                 const response = await apolloclient.mutate({
                     mutation: signup_mutation,
@@ -19,7 +19,6 @@ export const UserStore = defineStore("user", {
                         username: username,
                         email: email,
                         password: password,
-                        address: address
                     }
                 })
                 console.log(response.data.signupsuper.success);

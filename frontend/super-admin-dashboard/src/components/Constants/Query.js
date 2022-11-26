@@ -25,8 +25,8 @@ query MyQuery {
 `;
 
 const signup_mutation = gql`
-mutation MyMutation($username: String = "", $password: String = "", $lname: String = "", $fname: String = "", $email: String = "", $address: String = "") {
-  signupsuperadmin(input: {address: $address, email: $email, fname: $fname, lname: $lname, password: $password, username: $username}) {
+mutation MyMutation($username: String = "", $password: String = "", $lname: String = "", $fname: String = "", $email: String = "") {
+  signupsuperadmin(input: { email: $email, fname: $fname, lname: $lname, password: $password, username: $username}) {
     success
   }
 }
