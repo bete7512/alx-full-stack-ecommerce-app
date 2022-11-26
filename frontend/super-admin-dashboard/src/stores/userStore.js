@@ -21,8 +21,8 @@ export const UserStore = defineStore("user", {
                         password: password,
                     }
                 })
-                console.log(response.data.signupsuper.success);
-                return response.data.signupsuper.success
+                console.log(response);
+                return response.data.signupsuperadmin.success
             } catch (err) {
                 console.log(err);
                 return err.message

@@ -34,7 +34,7 @@ const handler = async (req, res) => {
       "https://hasura.io/jwt/claims":
       {
         "x-hasura-allowed-roles": ["seller","superadmin","admin","buyer","deliveryagent"],
-        "x-hasura-default-role": "seller",
+        "x-hasura-default-role": "superadmin",
         "x-hasura-user-id": `${user[0].id}`
       }
     }
