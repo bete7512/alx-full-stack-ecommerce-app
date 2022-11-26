@@ -35,12 +35,13 @@ const execute = async (variables) => {
 		}
 	);
 	const data = await fetchResponse.json();
+	console.log(data)
 	return data;
 };
 const handler = async (req, res) => {
 	const { fname, lname, email, password } = req.body.input.inputs;
 	const finduser = require('../FInder/find')
-	const { data, error } = await finduser({email:email}, find_query)
+	const { data, error } = await finduser({ email: email }, find_query)
 	console.log(data);
 	const user = data["supper_admin"]
 	if (user.length) {
@@ -62,7 +63,7 @@ const handler = async (req, res) => {
 		}
 		const { data, errors } = await execute(variables);
 		if (data) {
-			console.log("for test purpose"+data)
+			console.log("for test purpose" + data)
 			res.send({
 				success: "You are succefully registered"
 			})
