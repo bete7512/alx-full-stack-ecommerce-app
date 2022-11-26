@@ -40,7 +40,7 @@
                 <div v-else-if="loading">loading</div>
                 <div v-else class="flex flex-wrap justify-center space-x-2">
                     <div class="pt-5 sm:px-4 px-0"
-                        v-for="p in product.filter((elem) => (category.length > 0 ) ?  elem.category.name == category[0] : (subcategory.length > 0) ? elem.sub_category_ob.name === subcategory[0] : elem)"
+                        v-for="p in product.filter((elem) => (category.length > 0) ? elem.category.name == category[0] : (subcategory.length > 0) ? elem.sub_category_ob.name === subcategory[0] : elem)"
                         :key="p.id">
                         <Card :product="p"></Card>
                     </div>
@@ -67,13 +67,9 @@ const product = computed(() => result.value?.product ?? []);
 const products = ProductStore()
 onMounted(() => {
     products.getCategories()
-    // products.category()
 })
 watch(category, (one, two) => {
-    console.log(one, two);
-    // console.log("am from here"+product.filter((elem) => (subcategory.length > 0) ? subcategory.filter((e)=>e === elem.sub_category_ob.name)  : category.length > 0 ? category.filter((el) => el == elem.category.name) : elem))
 })
-// console.log(product);
 const test = ref(4)
 </script>
 <style>

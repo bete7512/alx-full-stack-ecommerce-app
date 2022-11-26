@@ -6,7 +6,7 @@
             </div>
             <div class="flex flex-col justify-center items-start">
                 <p class="text-2xl font-semibold">1,234</p>
-                <p class="text-sm font-semibold">Total Orders</p>
+                <p class="text-sm font-semibold">Total Orders{{result}}</p>
             </div>
         </div>
         <div class="sm:w-64 w-full sm:px-0 px-5 h-28 flex justify-center  items-center space-x-2 bg-white mt-4 rounded-lg">
@@ -39,6 +39,11 @@
     </div>
 </template>
 <script setup>
+import { ref } from 'vue'
+import { UserStore } from '../stores/userStore';
+import { useQuery } from '@vue/apollo-composable';
+import { aggragteQuery } from '../components/Constants/Query';
+const {error,loading,result} = useQuery(aggragteQuery);
 
 </script>
 <style lang="">

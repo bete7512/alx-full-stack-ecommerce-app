@@ -85,7 +85,6 @@
                     </button>
                     <div><router-link to="/login">login</router-link></div>
                 </div>
-
             </Form>
         </div>
     </div>
@@ -95,6 +94,7 @@ import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { ref } from 'vue'
 import { defineEmits } from 'vue';
+import { UserStore } from '../stores/userStore';
 const username = ref('')
 const password = ref('')
 const fname = ref('')
@@ -102,6 +102,7 @@ const lname = ref('')
 const email = ref('')
 const cpassword = ref('')
 const address = ref('')
+const user = UserStore()
 const schema = Yup.object().shape({
     fname: Yup.string()
         .required('First Name is required'),
@@ -120,16 +121,50 @@ const schema = Yup.object().shape({
         .required('Confirm Password is required'),
     address: Yup.string()
         .required('address is required'),
-    acceptTerms: Yup.string()
-        .required('Accept Ts & Cs is required')
+    // acceptTerms: Yup.string()
+    //     .required('Accept Ts & Cs is required')
 });
+const loginprocess = ref(false)
+const loginreturn = ref('')
 const onSubmit = async () => {
     try {
+        // await schema.validate({
+        //     fname: fname.value,
+        //     lname: lname.value,
+        //     username: username.value,
+        //     email: email.value,
+        //     password: password.value,
+        //     cpassword: cpassword.value,
+        //     address: address.value,
+        // }, {
+        //     abortEarly: false
+        // });
+        loginprocess.value = true
+        loginreturn.value = await user.signup({
+            fname: fname.value,
+            lname: lname.value,
+            username: username.value,
+            email: email.value,
+            password: password.value,
+            cpassword: cpassword.value,
+            address: address.value,
+        })
+        console.log(loginreturn.value.status)
+        if (loginreturn.value.status == 200) {
+            loginprocess.value = false
+            loginreturn.value = 'Registration Successful'
+        }
         console.log("display something")
+        loginprocess.value = false
     }
     catch (error) {
+        loginprocess.value = false
+        loginreturn.value = error.message
+        // if (error.errors) {
+        //     errors.value = error.errors;
+        // }
 
-    }
+        }
 }
 </script>
 <style scoped>

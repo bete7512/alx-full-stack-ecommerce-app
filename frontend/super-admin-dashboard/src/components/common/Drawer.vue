@@ -1,7 +1,7 @@
 <template>
     <div class="w-72 fixed bg-stone-900 z-10 h-screen ">
       <div class="flex justify-center  space-x-3  pr-3 items-center pt-3">
-          <div class="text-white inline-flex p-10">BS SElls</div>
+          <div class="text-white inline-flex p-10">E-commerce Platform</div>
         </div>
         <nav class="">
           <router-link
@@ -25,7 +25,7 @@
               />
             </svg>
   
-            <span class="mx-4">Dashboard</span>
+            <span class="mx-4">Overview</span>
           </router-link>
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
@@ -48,7 +48,7 @@
               />
             </svg>
   
-            <span class="mx-4">Products</span>
+            <span class="mx-4">Sellers</span>
           </router-link>
   
           <router-link
@@ -80,7 +80,7 @@
               />
             </svg>
   
-            <span class="mx-4">Add new Products</span>
+            <span class="mx-4">Buyers</span>
           </router-link>
   
           <router-link
@@ -108,7 +108,7 @@
               />
             </svg>
   
-            <span class="mx-4">Transaction</span>
+            <span class="mx-4">Deliver Agents</span>
           </router-link>
   
           <router-link
@@ -127,7 +127,7 @@
               />
             </svg>
   
-            <span class="mx-4">Orders</span>
+            <span class="mx-4">Transactions</span>
           </router-link>
   
           <router-link

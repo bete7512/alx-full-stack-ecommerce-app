@@ -1,13 +1,25 @@
 require('dotenv').config()
 const bcrypt = require('bcrypt')
-const fetch = require('node-fetch')
 const HASURA_SIGNUP_OPERATION = `
-mutation MyMutation($username: String!, $password: String!, $email: String!, $lname: String!, $fname: String!) {
- insert_users_one(object: {fname: $fname, lname: $lname, email: $email, username: $username, password: $password}) {
-   id
- }
-}
+mutation MyMutation($email: String!, $first_name: String!, $last_name: String!, $password: String!){
+	insert_supper_admin(objects: {email: $email, first_name: $first_name, last_name: $last_name, password: $password}){
+	  returning{
+		email
+		first_name
+		last_name
+	  }
+	}
+  }
 `;
+const find_query = `
+query MyQuery($email: String = "") {
+	supper_admin(where: {email: {_eq: $email}}, limit: 1) {
+	  email
+    id
+    password
+	}
+  }
+`
 const execute = async (variables) => {
 	const fetchResponse = await fetch(
 		"https://fullstack-ecommerce.hasura.app/v1/graphql",
@@ -23,16 +35,15 @@ const execute = async (variables) => {
 		}
 	);
 	const data = await fetchResponse.json();
-	console.log('DEBUG: ', data);
 	return data;
 };
 const handler = async (req, res) => {
-	console.log("what happened here");
-	const { fname, lname, username, email, password } = req.body.input.arg1;
-	const finduser = require('../checker/findusername')
-	const { data, error } = await finduser({ username, email })
-	const user = data["users"][0]
-	if (user) {
+	const { fname, lname, email, password } = req.body.input.inputs;
+	const finduser = require('../FInder/find')
+	const { data, error } = await finduser({email:email}, find_query)
+	console.log(data);
+	const user = data["supper_admin"]
+	if (user.length) {
 		return res.status(400).json({
 			message: 'you are  registered no registratrion again'
 		})
@@ -42,18 +53,15 @@ const handler = async (req, res) => {
 		const salt = bcrypt.genSaltSync(saltRounds);
 		const hashed = bcrypt.hashSync(password, salt);
 		const variables = {
-			fname: fname,
-			lname: lname,
-			username: username,
+			first_name: fname,
+			last_name: lname,
 			email: email,
-			password: hashed
+			password: hashed,
 		}
 		const { data, errors } = await execute(variables);
 		if (data) {
-			console.log(errors);
-			console.log(data)
 			res.send({
-				Success: "You are succefully registered"
+				success: "You are succefully registered"
 			})
 		}
 		else {

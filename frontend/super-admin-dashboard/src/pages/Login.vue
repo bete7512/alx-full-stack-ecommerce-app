@@ -51,9 +51,11 @@
 import { Form, Field } from 'vee-validate';
 import * as Yup from 'yup';
 import { ref } from 'vue'
+import { UserStore } from '../stores/userStore';
 import { defineEmits } from 'vue';
 const username = ref('')
 const password = ref('')
+const user = UserStore()
 const schema = Yup.object().shape({
     username: Yup.string()
         .required('username is required'),
@@ -61,14 +63,17 @@ const schema = Yup.object().shape({
         .min(3, 'Password must be at least 3 characters')
         .required('Password is required'),
 })
-
-
+const loginreturn = ref('')
+const loginprocess = ref(false)
 const onSubmit = async () => {
     try {
+        loginprocess.value = true
+        loginreturn.value = await user.login(username.value, password.value)
+        loginprocess.value = false
       console.log("display something")
     }
     catch (error) {
-       
+       loginreturn.value = error.message
     }
 }
 </script>
