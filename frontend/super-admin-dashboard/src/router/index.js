@@ -28,31 +28,37 @@ const router = createRouter({
     {
       path: '/products',
       name: 'products',
-      component: () => import('../pages/Products/Products.vue'),
+      component: () => import('../pages/Product.vue'),
       meta: { layout: 'main' }
     },
     {
-      path: '/addnewproduct',
-      name: 'addnewproduct',
-      component: () => import('../pages/Products/AddnewProduct.vue'),
+      path: '/sellers',
+      name: 'sellers',
+      component: () => import('../pages/Seller.vue'),
       meta: { layout: 'main' }
     },
     {
-      path: '/transactions',
-      name: 'transactions',
-      component: () => import('../pages/Products/Transaction.vue'),
+      path: '/deliveryagents',
+      name: 'deliveryagents',
+      component: () => import('../pages/Deliver.vue'),
       meta: { layout: 'main' }
     },
     {
       path: '/orders',
       name: 'orders',
-      component: () => (import('../pages/Products/Order.vue')),
+      component: () => (import('../pages/Order.vue')),
       meta: { layout: 'main' }
     },
     {
       path: '/profile',
       name: 'profile',
       component: () => (import('../pages/Profile.vue')),
+      meta: { layout: 'main' }
+    },
+    {
+      path:'/customers',
+      name:'customers',
+      component: () => (import('../pages/Buyer.vue')),
       meta: { layout: 'main' }
     },
     {
@@ -63,5 +69,12 @@ const router = createRouter({
     }
   ]
 })
-
+router.beforeEach(async (to) => {
+  const publicPages = ['/login', '/signup'];
+  const authRequired = !publicPages.includes(to.path);
+  if (authRequired && !window.localStorage.getItem("Apollotoken")) {
+    // returnUrl = to.fullPath;
+    return '/login';
+  }
+});
 export default router

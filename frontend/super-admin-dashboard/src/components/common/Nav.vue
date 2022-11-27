@@ -23,11 +23,37 @@
                         <path
                             d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor"
-                        class="bi bi-person" viewBox="0 0 16 16">
-                        <path
-                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                    </svg>
+                    <div class="relative" >
+                    <button @click="dropdownOpen = !dropdownOpen"
+                        class="relative z-10 block w-12 h-12 bg-red-500 overflow-hidden rounded-full shadow focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-person inline-flex" viewBox="0 0 16 16">
+                            <path
+                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                        </svg>
+                    </button>
+                    <div v-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 z-10 w-full h-full">
+                    </div>
+
+                    <transition enter-active-class="transition duration-150 ease-out transform"
+                        enter-from-class="scale-95 opacity-0" enter-to-class="scale-100 opacity-100"
+                        leave-active-class="transition duration-150 ease-in transform"
+                        leave-from-class="scale-100 opacity-100" leave-to-class="scale-95 opacity-0">
+                        <div v-show="dropdownOpen"
+                            class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl">
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Announcement</a>
+
+                            <button @click="logout"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">
+                                Log out
+                            </button>
+                        </div>
+                    </transition>
+                </div>
+
                 </div>
                 <!-- </div> -->
             </div>
@@ -58,6 +84,12 @@ const isNav = ref(false)
 const nav = () => {
     isNav.value = true
     console.log(isNav.value);
+}
+const dropdownOpen = ref(false)
+const logout = () => {
+    localStorage.removeItem('Apollotoken')
+    location.reload()
+    console.log('logout');
 }
 //array of numbers
 </script>
