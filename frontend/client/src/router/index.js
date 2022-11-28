@@ -4,15 +4,16 @@ import Login from '../pages/Login.vue'
 import Signup from '../pages/Signup.vue'
 import Main from '../pages/Main.vue'
 import Cart from '../pages/Cart.vue'
+import Landing from '../pages/Landing.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: Home,
-    //   meta: { layout: "main" },
-    // },
+    {
+      path: '/',
+      name: 'landing',
+      component: Landing,
+      meta: { layout: "empty" },
+    },
     {
       path: '/',
       name: 'main',
@@ -20,7 +21,7 @@ const router = createRouter({
       meta: { layout: "main" },
       children: [
         {
-          path: '/',
+          path: '/home',
           name: 'home',
           component: Home,
           meta: { layout: "main" },

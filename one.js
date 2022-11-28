@@ -1,14 +1,20 @@
-function repeatStringNumTimes(str, num) {
-  let sth = str
-  if(num == 0){
-    sth = ''
-  }
-  if(num > 0){
-    for(let i  = 1;i <= num;i++){
-      sth += str
+function mutation(arr) {
+  let one = [...arr[0]]
+  let two = [...arr[1]]
+  console.log(one)
+  console.log(two)
+  let holder = false
+  for(let i = 0; i < two.length;i++){
+    if(!one.indexOf(two[i])){
+      console.log(one.indexOf(two[i]))
+      holder =  false
     }
+    else{
+      holder = true
+    }
+
   }
-console.log(sth)
-  return sth;
+    return holder;
 }
-console.log(repeatStringNumTimes("abc", 3))
+
+console.log(mutation(["Tiger", "Zebra"]));

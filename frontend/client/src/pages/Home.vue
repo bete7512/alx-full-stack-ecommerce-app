@@ -59,7 +59,10 @@ const { error, loading, result } = useQuery(
     GET_PRODUCTS,
     {
         fetchPolicy: 'network-only',
-    }
+    },
+    // {
+    //     pollInterval:100
+    // }
 )
 const category = ref([])
 const subcategory = ref([])
@@ -68,8 +71,8 @@ const products = ProductStore()
 onMounted(() => {
     products.getCategories()
 })
-watch(category, (one, two) => {
-})
+// watch(category, (one, two) => {
+// })
 const test = ref(4)
 </script>
 <style>
