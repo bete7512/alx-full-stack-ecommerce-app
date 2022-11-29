@@ -25,11 +25,11 @@
                         </div>
                     </a>
                 </div>
-                <div class="flex h-full justify-between items-center space-x-">
+                <div class="flex h-full justify-between items-center ">
                     <div class="flex h-full justify-center items-center space-x-1">
                         <router-link to="/login"
                             class="flex  hover:bg-pink-800 h-full  justify-center items-center px-4 space-x-2">
-                            <div>
+                            <div class="text-black">
                                 signin
                             </div>
                         </router-link>
