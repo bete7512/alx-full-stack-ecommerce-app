@@ -1,6 +1,6 @@
 <template >
-    <div class="sm:flex px-4 pt-10 sm:w-full w-auto space-x-3 ">
-        <div class="flex sm:justify-start justify-center  sm:w-1/3 w-full  ">
+    <div class="sm:flex px-4 h-full pt-10 sm:w-full w-auto space-x-3 ">
+        <div class="flex sm:justify-start justify-center h-full  min-w-fit  ">
             <div class="flex justify-start w-full p-10 bg-gray-300 rounded-lg">
                 <div>
                     <h1 class="flex justify-start text-xl font-bold">Categories</h1>
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class=" pt-4 space-x-3 sm:w-3/4  w-full">
+        <div class="overflow-y-scroll pt-4 space-x-3 sm:w-5/6  w-full">
             <div class="">
                 <h1 class="flex justify-center text-xl font-bold">Popular Products</h1>
                 <div v-if="error">error</div>

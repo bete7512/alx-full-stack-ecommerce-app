@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-700 w-full flex justify-center items-center h-80">
+    <div class="bg-gray-700 w-full text-white flex justify-center items-center h-80">
         <div class="sm:flex block space-y-4 flex-wrap container  justify-between">
             <div>
                 <div class="w-20 h-20 flex justify-center items-center">Bs</div>
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-
+    <div class="flex justify-center items-center h-20 w-full ">copyright Protected @2022</div>
 </template>
 
 <script setup>

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="flex justify-between items-center text-slate-900 bg-[#6DB0B0] px-10 h-20">
+    <div class="w-full fixed z-50">
+        <div class="flex justify-between items-center text-slate-900 bg-[#dae0ff] px-10 h-20">
             <div class="text-4-xl font-bold">BS</div>
             <div>
                 <div>
@@ -10,12 +10,18 @@
                                 Categories
                             </div>
                             <div class="flex pl-2">
-                                <div>All</div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                                     <path
                                         d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                                </svg>
+                                </svg> -->
+                                <select  id="">
+                                    <option v-for="cat in product.categories" value="">
+                                    <select name="" id="">{{cat.name}}
+                                        <option value=""></option>
+                                    </select>
+                                    </option>                                  
+                                </select>
                             </div>
                         </div>
                         <div class="relative sm:w-80 md:96 ">
@@ -35,16 +41,17 @@
                     </div>
                 </div>
             </div>
-            <div class="flex justify-between items-center space-x-3">
-                <div v-if="!user.userLoggedin" class="flex justify-center items-center space-x-1">
-                    <router-link to="/login" class="flex space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+            <div class="flex h-full justify-between items-center space-x-3">
+                <div v-if="!user.userLoggedin" class="flex h-full justify-center items-center space-x-1">
+                    <router-link to="/login"
+                        class="flex h-full justify-center items-center hover:bg-red-700 hover:text-white px-3 space-x-2">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                             class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                 d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
                             <path fill-rule="evenodd"
                                 d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-                        </svg>
+                        </svg> -->
                         <div>
                             signin
                         </div>
@@ -77,17 +84,17 @@
                         </div>
                     </transition>
                 </div> -->
-                <div class="flex space-x-1 justify-center items-center">
-                    <router-link to="/carts"  class="text-lg flex space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                <div class="flex space-x-1 h-full   justify-center items-center">
+                    <router-link to="/carts"
+                        class="text-lg h-full justify-center items-center hover:bg-red-900 hover:text-white px-4 flex space-x-2">
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
                             class="bi bi-cart" viewBox="0 0 16 16">
                             <path
                                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg>
+                        </svg> -->
                         <div>
                             Cart
                         </div>
-
                     </router-link>
                 </div>
                 <!-- <div class="flex space-x-1 justify-center items-center">
@@ -128,16 +135,17 @@
                         </div>
                     </transition>
                 </div>
-
             </div>
         </div>
     </div>
 </template>
 <script setup>
+import { ProductStore } from '../../stores/productStore';
 import { ref } from 'vue'
 import { UserStore } from '../../stores/userStore';
 import router from '../../router';
 const user = UserStore();
+const product = ProductStore();
 const dropdownOpen = ref(false)
 const logout = () => {
     localStorage.removeItem('Apollotoken')

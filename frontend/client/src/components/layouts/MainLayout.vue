@@ -2,7 +2,10 @@
     <div>
        <Nav class="lg:block hidden"></Nav>
        <Mobile class="block sm:hidden"></Mobile>
-        <slot></slot>
+       <div class="bg-[#dae0ff]">
+
+           <slot></slot>
+       </div>
     </div>
     <Footer></Footer>
 </template>
