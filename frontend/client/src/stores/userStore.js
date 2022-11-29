@@ -40,7 +40,7 @@ export const UserStore = defineStore("user", {
                 })
                 localStorage.setItem('Apollotoken', response.data.loginbuyer.accestoken)
                 if(window.localStorage.getItem('Apollotoken')){
-                    router.push('/')
+                    router.push('/home')
                 }
                 return response.data.loginbuyer.accestoken
             } catch (err) {
