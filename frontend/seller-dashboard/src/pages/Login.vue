@@ -42,7 +42,11 @@
                             Sign in
                         </div>
                     </button>
+                    
                     <div class="text-blue-900">
+                        <span class="txt1">
+							Don’t have an account?
+						</span>
                         <router-link to="/signup">Signup</router-link>
                         <br>
                         <router-link to="/login">Forgot password</router-link>
