@@ -16,9 +16,8 @@
                 <div>
                 <a href="http://www.linkedin.com/in/solomon-legesse" >linkedin</a> 
                 <a href="https://github.com/solomon244">github</a>
-                </div>
-                <div>+251913451762</div>
-                
+                <a href="https://twitter.com/solomon2436">twitter</a>
+                </div> 
             </div>
             <div class="font-bold">
                 <div>Subscribe our News letter</div>
