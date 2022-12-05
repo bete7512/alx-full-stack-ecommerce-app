@@ -18,7 +18,6 @@ const handler = async (req, res) => {
   const data = await finduser({ email: email }, find_query)
   const user = data['data']["buyer"]
   console.log(user);
-  // console.log(user[0].id);
   if (!user.length) {
     return res.status(400).json({
       message: 'incorrect username or password please enter again'
@@ -41,8 +40,6 @@ const handler = async (req, res) => {
       }
     }
       , process.env.SECRET_KEY)
-    // console.log(token)
-    // console.log(user.id);
     return res.json({
       accestoken: token,
     })
