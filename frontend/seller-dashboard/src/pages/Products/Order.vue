@@ -17,14 +17,12 @@
                 <tr v-if="error">error fetching data</tr>
                 <tr v-if="loading">loading</tr>
                 <tr v-else v-for="order in orders" :key="order.id"
-                
                     class=" bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                     <td class="py-3 px-2">{{ order.buyer.first_name }}</td>
                     <td class="py-3 px-2">{{ order.buyer.email }}</td>
-                    <td class="py-3 px-2">{{ order.options.product.name }}</td>
+                    <td class="py-3 px-2">{{ order.p_option.product.name }}</td>
                     <td class="py-3 px-2">0</td>
                     <td class="py-3 px-2">{{ order.created_at }}</td>
-    
                     <td class="py-3 px-2">
                         <div class="flex space-x-2">
                             <button @click="view_product(order.id)">
@@ -53,47 +51,45 @@
                                 </svg>
                             </button>
                         </div>
-
                     </td>
                 </tr>
             </tbody>
             <!-- <div>{{ product.options }}</div> -->
         </table>
-
         <!-- <div v-else>{{ product }}</div> -->
     </div>
     <orderdetail :id="id_param" v-if="detail_product" v-on:close="detail_product = false"></orderdetail>
-    <Delete v-if="isDelete" v-on:canceldelete="isDelete = false" :id="id_param" v-on:deletenotify="isDelete = false"></Delete>
+    <Delete v-if="isDelete" v-on:canceldelete="isDelete = false" :id="id_param" v-on:deletenotify="isDelete = false">
+    </Delete>
 </template>
-
 <script setup>
 import { useQuery } from '@vue/apollo-composable';
 import { ProductStore } from '../../stores/ProductStores';
 import gql from 'graphql-tag';
 import Delete from './Delete.vue'
 import orderdetail from './orderdetail.vue';
-import { product_query,query_orders } from '../../Constants/Query/query';
+import { product_query, query_orders } from '../../Constants/Query/query';
 import { ref, computed } from 'vue';
 import { logMissingFieldErrors } from '@apollo/client/core/ObservableQuery';
 const { error, result, loading } = useQuery(
-query_orders, {
+    query_orders, {
     fetchPolicy: 'network-only',
 });
 const isDelete = ref(false);
 const products = ProductStore();
-const orders = computed(() => result.value?.order ?? []);
+const orders = computed(() => result.value?.product_orders ?? []);
 // console.log(orders);
 const id_param = ref(0)
-const edit_product = ()=>{
+const edit_product = () => {
 
 }
-const delete_product = (id)=>{
+const delete_product = (id) => {
     id_param.value = id
     isDelete.value = true;
 }
-const detail_product  = ref(false)
+const detail_product = ref(false)
 
-const view_product = (id)=>{
+const view_product = (id) => {
     id_param.value = id
     detail_product.value = true
 

@@ -38,8 +38,8 @@
                 <h1 class="flex justify-center text-xl font-bold">Popular Products</h1>
                 <div v-if="error">error</div>
                 <div v-else-if="loading">loading</div>
-                <div v-else class="flex flex-wrap justify-center space-x-2">
-                    <div class="pt-5 sm:px-4 px-0"
+                <div v-else class="flex flex-wrap justify-center  space-x-2">
+                    <div class="pt-5 sm:px-4 px-0 "
                         v-for="p in product.filter((elem) => (category.length > 0) ? elem.category.name == category[0] : (subcategory.length > 0) ? elem.sub_category_ob.name === subcategory[0] : elem)"
                         :key="p.id">
                         <Card :product="p"></Card>

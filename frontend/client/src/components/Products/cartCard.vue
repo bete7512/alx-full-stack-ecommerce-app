@@ -1,5 +1,5 @@
 <template>
-    <div class="h-auto py-4 sm:px-4 px-2  sm:w-80  w-full max-w-sm bg-white border border-gray-400 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 ">
+    <div class="h-auto py-4 sm:px-4   sm:w-96  w-full  bg-white border hover:scale-105 hover:duration-500 hover:shadow-lg  rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 ">
         <img class="h-72 sm:w-full w-full" :src="product.p_option.image_url.split(',')[0]" alt="">
         <div class="font-bold italic text-center">{{product.p_option.product.name}}</div>
         <div class="italic text-red-400 line-clamp-3 text-center">{{product.p_option.product.about_product}}</div>

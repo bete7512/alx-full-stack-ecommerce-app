@@ -116,7 +116,7 @@ mutation MyMutation($base64str: String = "", $name: String = "", $type: String =
 
 const query_orders = gql`
 query MyQuery {
-  order {
+  product_orders {
     id
     buyer_id
     buyer {
@@ -125,11 +125,14 @@ query MyQuery {
       id
     }
     created_at
-    options {
+    p_option {
+      difference
+      image_url
       id
       name
+      price
       product {
-        id
+        about_product
         name
       }
     }

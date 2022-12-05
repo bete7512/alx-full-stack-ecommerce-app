@@ -26,7 +26,7 @@
                 </svg>
             </div>
             <div class="flex flex-col justify-center items-start">
-                <p class="text-2xl font-semibold">{{result.order_aggregate.aggregate.count}}</p>
+                <p class="text-2xl font-semibold">{{result.product_orders_aggregate.aggregate.count}}</p>
                 <p class="text-sm font-semibold">Total orders</p>
             </div>
         </div>
@@ -72,12 +72,12 @@ const limit = ref(5)
 const offset = ref(0)
 const { error, loading, result } = useQuery(gql`
 query MyQuery {
-  order_aggregate {
+  product_aggregate {
     aggregate {
       count
     }
   }
-  product_aggregate {
+  product_orders_aggregate {
     aggregate {
       count
     }

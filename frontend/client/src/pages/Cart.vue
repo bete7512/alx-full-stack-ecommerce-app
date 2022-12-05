@@ -1,10 +1,11 @@
 <template>
     <div class="flex justify-center items-center">
-        <div class=" pt-4 space-x-3 container flex justify-center items-center  w-full">
+        <div class=" pt-420 space-x-3 container flex justify-center items-center  w-full">
             <div class="">
                 <h1 class="flex container justify-center text-xl font-bold">Popular Products</h1>
                 <div v-if="error">error</div>
                 <div v-else-if="loading">loading</div>
+                <div v-else-if="!product.length">there is not thing</div>
                 <div v-else class="flex flex-wrap justify-center space-x-2">
                     <div class="pt-5 sm:px-4 px-0" v-for="p in product" :key="p.id">
                         <Card :product="p">

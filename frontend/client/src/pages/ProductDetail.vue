@@ -3,7 +3,7 @@
     <div v-else-if="loading">error</div>
     <div v-else class="flex  justify-center items-center   ">
         <div class="container  h-full bg-zinc-100 w-full px-4 shadow-slate-800 sm:w-3/4 md:1/2 lg:1/2  space-y-3">
-            <div class="flex justify-start pt-2">
+            <div class="flex justify-start sm:pt-24">
                 <router-link to="/" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go
                     back</router-link>
             </div>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="flex flex-wrap space-x-2 justify-center items-center py-3">
-                        <button :class="[option.is_user_added_to_cart || option.is_user_added_to_order ? 'bg-red-700':'bg-blue-500']" @click="add_cart(option.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex space-x-2 items-center">
+                        <button :class="[option.is_user_added_to_cart ? 'bg-red-700':'bg-blue-500']" @click="add_cart(option.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex space-x-2 items-center">
                             <svg v-if="is_carting" role="status"
                             class="inline mr-3 w-4 h-4 text-white animate-spin" viewBox="0 0 100 101" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@
                         </div>
                         <div v-else="option.is_user_added_to_cart">Remove from cart</div>
                         </button>
-                        <button :class="[option.is_user_added_to_cart || option.is_user_added_to_order ? 'bg-red-700':'bg-blue-500']"
+                        <button :class="[option.is_user_added_to_order ? 'bg-red-700':'bg-blue-500']"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex space-x-2 items-center"
                             @click="add_order(option.id)">
                             <svg v-if="is_ordering" role="status"

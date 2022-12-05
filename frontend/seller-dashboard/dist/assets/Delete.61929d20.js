@@ -1,4 +1,4 @@
-import{_ as n,A as i,g as r,o as u,c as _,a as e,B as p,C as f}from"./index.5fd0b693.js";const h=t=>(p("data-v-0caf70f9"),t=t(),f(),t),v={class:"overlay top-0 left-0 bottom-0 right-0 flex items-center justify-center"},b=h(()=>e("div",null,"are you sure you want to delete? ",-1)),m={__name:"Delete",props:{id:Number},emits:["canceldelete","deletenotify"],setup(t,{emit:o}){const d=t,a=c=>{console.log("deleting"),l(),o("deletenotify"),o("canceldelete")},s=c=>{o("canceldelete")},{mutate:l}=i(r`
+import{_ as n,A as i,g as r,o as u,c as _,a as e,B as p,C as f}from"./index.3c5f2394.js";const h=t=>(p("data-v-0caf70f9"),t=t(),f(),t),v={class:"overlay top-0 left-0 bottom-0 right-0 flex items-center justify-center"},b=h(()=>e("div",null,"are you sure you want to delete? ",-1)),m={__name:"Delete",props:{id:Number},emits:["canceldelete","deletenotify"],setup(t,{emit:o}){const d=t,a=c=>{console.log("deleting"),l(),o("deletenotify"),o("canceldelete")},s=c=>{o("canceldelete")},{mutate:l}=i(r`
 mutation MyMutation($id: Int!) {
   delete_product_by_pk(id: $id) {
     id
