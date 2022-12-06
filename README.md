@@ -33,7 +33,7 @@ No known bugs at this time.
 ## Authors
    Bete Goshme-[Github](https://github.com/bete7512) / [Twitter](https://twitter//) 
 
-    Solomon Legesse - [Github](https://github.com/solomon244) / [Twitter](https://twitter/solomon2436.com/)  
+   Solomon Legesse - [Github](https://github.com/solomon244) / [Twitter](https://twitter/solomon2436.com/)  
 
 ## License
 Public No copy write protection. 
