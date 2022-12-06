@@ -5,9 +5,9 @@
 
 ## Table of Content
 * [Installation](#installation)
-* [Recommended IDE Setup](#Recommended IDE Setup)
-* [Customize configuration](#Customize configuration)
-* [Project Setup](#Project Setup)
+* [Recommended IDE Setup](#recommended IDE Setup)
+* [Customize configuration](#customize configuration)
+* [Project Setup](project Setup)
 * [Bugs](#bugs)
 * [Authors](#authors)
 * [License](#license)
@@ -17,7 +17,6 @@
 
 
 ## Recommended IDE Setup
-
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
 ## Customize configuration
