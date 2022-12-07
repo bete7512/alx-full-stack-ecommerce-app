@@ -84,6 +84,9 @@
                         </div>
                     </button>
                     <div>
+                        <span class="txt1">
+							Already have an account?
+						</span>
                         <router-link class="text-blue-400" to="/login">login</router-link>
                     </div>
                     <!-- <div>{{count.doubleCount}}</div> -->

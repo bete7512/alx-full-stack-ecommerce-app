@@ -45,9 +45,7 @@
                             Get our Fast and quality service
                         </div>
                         <div class="text-2xl">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis blanditiis dolorum cumque
-                            corrupti fugit ea tempore aliquam soluta cum, repudiandae nemo, numquam obcaecati quae ipsam
-                            excepturi fuga, id minus iusto!
+                            Which is why, our Clients love us as we don’t compromise on our values.
                         </div>
                         <router-link to='/home'
                             class="rounded-lg hover:text-white flex w-48  text-lg bg-[#fe5627]  justify-center h-14  items-center hover:bg-[#a34a58] py-2">
