@@ -36,6 +36,9 @@ No known bugs at this time.
    Solomon Legesse - [Github](https://github.com/solomon244) / [Twitter](https://twitter/solomon2436.com/)  
 
 ## License
-Public No copy write protection. 
+Public No copywrite protection. 
+
 ![image](https://user-images.githubusercontent.com/99808732/206248738-c75a5acf-adf5-4da9-8201-6105f8ec2465.png)
-![image](https://user-images.githubusercontent.com/99808732/206249231-56d77980-5388-4596-813d-0f1ed4139133.png)
+
+![image](https://user-images.githubusercontent.com/99808732/206252622-545ec112-cce6-4258-bd12-db1ce90a2804.png)
+
